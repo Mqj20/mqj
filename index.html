@@ -3,559 +3,235 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>متجر التطبيقات التابع لقناة تطبيقات عبود</title>
+<title>متجر عبود — تطبيقات TV والرياضة</title>
 
-<!-- Fonts & Icons -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-:root {
-    --bg-main: #030811;
-    --bg-card: #091728;
-    --blue-accent: #0878ff;
-    --gold-accent: #ffc400;
-    --green-online: #18c985;
-    --text-main: #f5f7fb;
-    --text-muted: #9caec2;
-    --border-color: rgba(0, 140, 255, 0.25);
-    --radius-card: 16px;
-    --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    font-family: "Cairo", sans-serif;
-    background: radial-gradient(circle at 50% 0%, #081d38 0%, var(--bg-main) 70%);
-    color: var(--text-main);
-    min-height: 100vh;
-    line-height: 1.5;
-}
-
-/* Header */
-.header {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background: rgba(3, 10, 20, 0.85);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border-color);
-}
-
-.nav {
-    max-width: 1200px;
-    margin: auto;
-    padding: 12px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.brand {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.brand-icon {
-    width: 44px;
-    height: 44px;
-    border-radius: 12px;
-    background: linear-gradient(135deg, var(--blue-accent), #043f8a);
-    border: 1px solid var(--gold-accent);
-    color: var(--gold-accent);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-}
-
-.brand-text h2 {
-    font-size: 18px;
-    font-weight: 800;
-}
-
-.brand-text span {
-    color: var(--text-muted);
-    font-size: 11px;
-    display: block;
-}
-
-.nav-actions {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.online {
-    padding: 6px 14px;
-    border: 1px solid rgba(24, 201, 133, 0.4);
-    border-radius: 20px;
-    font-size: 12px;
-    background: rgba(24, 201, 133, 0.05);
-}
-
-.online i {
-    color: var(--green-online);
-    margin-left: 6px;
-}
-
-.telegram-btn {
-    text-decoration: none;
-    color: #fff;
-    background: linear-gradient(135deg, #168fff, #0865d8);
-    padding: 8px 16px;
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: 700;
-    transition: var(--transition);
-}
-
-.telegram-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(8, 120, 255, 0.4);
-}
-
-/* Hero Section */
-.hero {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 35px 20px 20px;
-    text-align: center;
-}
-
-.channel-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    border: 1px solid var(--gold-accent);
-    color: var(--gold-accent);
-    padding: 6px 16px;
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: 700;
-    background: rgba(255, 196, 0, 0.08);
-}
-
-.hero h1 {
-    margin-top: 15px;
-    font-size: 38px;
-    font-weight: 900;
-}
-
-.hero h1 span {
-    color: var(--gold-accent);
-}
-
-.hero p {
-    margin-top: 8px;
-    color: var(--text-muted);
-    font-size: 15px;
-}
-
-/* Search & Filters */
-.search-area {
-    max-width: 1200px;
-    margin: 0 auto 25px;
-    padding: 0 20px;
-}
-
-.search-box {
-    background: rgba(9, 23, 40, 0.6);
-    border: 1px solid var(--border-color);
-    border-radius: 20px;
-    padding: 12px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.search-input-wrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-}
-
-.search-icon {
-    position: absolute;
-    right: 15px;
-    color: var(--text-muted);
-    font-size: 16px;
-}
-
-.search-input {
-    width: 100%;
-    background: #05101c;
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
-    padding: 12px 42px 12px 15px;
-    color: #fff;
-    font-family: inherit;
-    font-size: 14px;
-    outline: none;
-    transition: var(--transition);
-}
-
-.search-input:focus {
-    border-color: var(--blue-accent);
-}
-
-.filters {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.filter {
-    border: 1px solid var(--border-color);
-    background: #061424;
-    color: var(--text-muted);
-    padding: 8px 16px;
-    border-radius: 14px;
-    cursor: pointer;
-    font-family: inherit;
-    font-size: 13px;
-    font-weight: 700;
-    transition: var(--transition);
-}
-
-.filter:hover, .filter.active {
-    background: var(--gold-accent);
-    color: #000;
-    border-color: var(--gold-accent);
-}
-
-/* Leagues Grid */
-.leagues {
-    max-width: 1200px;
-    margin: 0 auto 30px;
-    padding: 0 20px;
-}
-
-.league-box {
-    background: rgba(9, 23, 40, 0.5);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-card);
-    padding: 20px;
-    text-align: center;
-}
-
-.champions-top {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 6px;
-    margin-bottom: 15px;
-}
-
-.champions-top img {
-    width: 75px;
-    height: 75px;
-    object-fit: contain;
-}
-
-.champions-line {
-    width: 60%;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--blue-accent), transparent);
-    margin: 10px auto 20px;
-}
-
-.leagues-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-    gap: 12px;
-}
-
-.league {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 12px;
-    background: rgba(5, 16, 28, 0.4);
-    border-radius: 12px;
-    transition: var(--transition);
-}
-
-.league:hover {
-    background: rgba(8, 120, 255, 0.1);
-    transform: translateY(-3px);
-}
-
-.league img {
-    width: 50px;
-    height: 50px;
-    object-fit: contain;
-    margin-bottom: 6px;
-}
-
-.league strong { font-size: 12px; }
-.league small { color: var(--text-muted); font-size: 10px; }
-
-/* Apps Section */
-.apps-section {
-    max-width: 1200px;
-    margin: auto;
-    padding: 0 20px 50px;
-}
-
-.apps-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 18px;
-}
-
-.app-card {
-    position: relative;
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-card);
-    padding: 18px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    transition: var(--transition);
-    overflow: hidden;
-}
-
-.app-card:hover {
-    transform: translateY(-4px);
-    border-color: rgba(8, 120, 255, 0.6);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-}
-
-.ribbon {
-    position: absolute;
-    top: 15px;
-    left: -30px;
-    transform: rotate(-45deg);
-    background: var(--gold-accent);
-    color: #000;
-    width: 110px;
-    text-align: center;
-    font-size: 10px;
-    font-weight: 900;
-    padding: 3px 0;
-}
-
-.app-header {
-    text-align: center;
-}
-
-.app-icon {
-    width: 65px;
-    height: 65px;
-    margin: 0 auto 10px;
-    border-radius: 14px;
-    background: linear-gradient(135deg, #0d223a, #040c17);
-    border: 1px solid var(--border-color);
-    color: var(--gold-accent);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 26px;
-}
-
-.app-title {
-    font-size: 16px;
-    font-weight: 800;
-    margin-bottom: 4px;
-}
-
-.app-desc {
-    color: var(--text-muted);
-    font-size: 12px;
-    line-height: 1.6;
-    margin-bottom: 12px;
-    min-height: 38px;
-}
-
-.app-meta {
-    background: #040d18;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 8px;
-    padding: 6px;
-    text-align: center;
-    font-size: 11px;
-    color: var(--text-muted);
-    margin-bottom: 12px;
-}
-
-.app-actions {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-}
-
-.btn {
-    width: 100%;
-    border: none;
-    border-radius: 10px;
-    padding: 9px;
-    font-family: inherit;
-    font-size: 12px;
-    font-weight: 700;
-    cursor: pointer;
-    text-decoration: none;
-    text-align: center;
-    transition: var(--transition);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-}
-
-.btn-download {
-    color: #fff;
-    background: linear-gradient(135deg, #ff9200, #e95b00);
-}
-
-.btn-download:hover { opacity: 0.9; }
-
-.btn-code {
-    background: #06182b;
-    color: var(--gold-accent);
-    border: 1px solid rgba(255, 196, 0, 0.3);
-}
-
-.btn-player {
-    background: #071b32;
-    color: #70b9ff;
-    border: 1px solid var(--border-color);
-}
-
-/* Modal */
-.modal {
-    position: fixed;
-    inset: 0;
-    z-index: 5000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 15px;
-    background: rgba(0, 0, 0, 0.75);
-    backdrop-filter: blur(6px);
-    opacity: 0;
-    pointer-events: none;
-    transition: var(--transition);
-}
-
-.modal.show {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-.modal-box {
-    width: min(400px, 100%);
-    background: #091728;
-    border: 1px solid var(--gold-accent);
-    border-radius: 20px;
-    overflow: hidden;
-    position: relative;
-    text-align: center;
-    transform: scale(0.9);
-    transition: var(--transition);
-}
-
-.modal.show .modal-box {
-    transform: scale(1);
-}
-
-.kane-image {
-    width: 100%;
-    height: 180px;
-    background: #030811;
-}
-
-.kane-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.close-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    border: none;
-    background: rgba(0, 0, 0, 0.6);
-    color: #fff;
-    cursor: pointer;
-    z-index: 2;
-}
-
-.modal-content {
-    padding: 20px;
-}
-
-.modal-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-top: 15px;
-}
-
-/* Back to Top */
-.top-btn {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    border: 1px solid var(--border-color);
-    background: #06182b;
-    color: var(--blue-accent);
-    cursor: pointer;
-    display: none;
-    z-index: 900;
-}
-
-.top-btn.show { display: block; }
-
-footer {
-    border-top: 1px solid var(--border-color);
-    background: #020914;
-    padding: 20px;
-    text-align: center;
-    color: var(--text-muted);
-    font-size: 12px;
-}
-
-@media(max-width: 600px) {
-    .hero h1 { font-size: 28px; }
-    .search-box { padding: 8px; }
-    .apps-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
-    .app-card { padding: 12px; }
-    .app-title { font-size: 14px; }
-    .app-desc { font-size: 10px; min-height: 30px; }
-}
-
-@media(max-width: 400px) {
-    .apps-grid { grid-template-columns: 1fr; }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+    --bg:#06060f;
+    --bg-elev:#0b0b18;
+    --card:#0d0d1e;
+    --card-hover:#13132a;
+    --border:rgba(139,92,246,.12);
+    --border-strong:rgba(139,92,246,.35);
+    --primary:#8b5cf6;
+    --primary-2:#06b6d4;
+    --accent:#fbbf24;
+    --success:#10b981;
+    --danger:#f43f5e;
+    --text:#f1f5f9;
+    --text-muted:#94a3b8;
+    --text-dim:#64748b;
+    --grad-primary:linear-gradient(135deg,#8b5cf6 0%,#06b6d4 100%);
+    --grad-gold:linear-gradient(135deg,#fbbf24 0%,#f59e0b 100%);
+    --grad-cta:linear-gradient(135deg,#f59e0b 0%,#ef4444 100%);
+    --radius:20px;
+    --radius-md:16px;
+    --radius-sm:12px;
+    --shadow:0 4px 24px rgba(0,0,0,.5);
+    --shadow-lg:0 24px 64px rgba(0,0,0,.7);
+    --glow:0 0 60px rgba(139,92,246,.25);
+    --t:.3s cubic-bezier(.4,0,.2,1);
+    --t-fast:.18s cubic-bezier(.4,0,.2,1);
+}
+
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+
+body{
+    font-family:"Cairo",system-ui,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    min-height:100vh;
+    line-height:1.6;
+    overflow-x:hidden;
+    position:relative;
+}
+
+::selection{background:var(--primary);color:#fff}
+
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:rgba(139,92,246,.3);border-radius:5px}
+::-webkit-scrollbar-thumb:hover{background:var(--primary)}
+
+img{max-width:100%;display:block}
+button{font-family:inherit}
+
+.bg-orbs{position:fixed;inset:0;overflow:hidden;z-index:-1;pointer-events:none}
+.orb{position:absolute;border-radius:50%;filter:blur(100px);opacity:.4;animation:float 22s ease-in-out infinite}
+.orb-1{width:520px;height:520px;background:radial-gradient(circle,#8b5cf6,transparent 70%);top:-15%;right:-10%;animation-delay:0s}
+.orb-2{width:480px;height:480px;background:radial-gradient(circle,#06b6d4,transparent 70%);bottom:-15%;left:-10%;animation-delay:-7s}
+.orb-3{width:400px;height:400px;background:radial-gradient(circle,#f59e0b,transparent 70%);top:40%;left:50%;transform:translateX(-50%);opacity:.15;animation-delay:-14s}
+@keyframes float{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(-40px,50px) scale(1.1)}66%{transform:translate(40px,-30px) scale(.95)}}
+
+.header{position:sticky;top:0;z-index:100;background:rgba(6,6,15,.7);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border-bottom:1px solid var(--border)}
+.nav{max-width:1280px;margin:auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:12px;cursor:pointer}
+.brand-icon{width:46px;height:46px;border-radius:14px;background:var(--grad-primary);display:flex;align-items:center;justify-content:center;color:#fff;font-size:20px;box-shadow:0 4px 20px rgba(139,92,246,.4);position:relative;overflow:hidden}
+.brand-icon::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,transparent,rgba(255,255,255,.25),transparent);transform:translateX(-100%);animation:shine 4s infinite}
+@keyframes shine{0%,60%,100%{transform:translateX(-100%)}80%{transform:translateX(100%)}}
+.brand-text h2{font-size:17px;font-weight:800;line-height:1.2;background:var(--grad-primary);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.brand-text span{color:var(--text-muted);font-size:11px;font-weight:500;display:block;margin-top:2px}
+.nav-actions{display:flex;align-items:center;gap:10px}
+.online{display:flex;align-items:center;gap:8px;padding:8px 16px;border:1px solid rgba(16,185,129,.35);border-radius:30px;font-size:12px;font-weight:600;background:rgba(16,185,129,.08);color:#6ee7b7}
+.online-dot{width:8px;height:8px;border-radius:50%;background:var(--success);box-shadow:0 0 12px var(--success);animation:pulse 1.8s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.3)}}
+.telegram-btn{text-decoration:none;color:#fff;background:var(--grad-primary);padding:9px 18px;border-radius:30px;font-size:12.5px;font-weight:700;display:flex;align-items:center;gap:6px;transition:var(--t);box-shadow:0 4px 16px rgba(139,92,246,.35);position:relative;overflow:hidden}
+.telegram-btn::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,transparent,rgba(255,255,255,.2),transparent);transform:translateX(-100%);transition:transform .6s}
+.telegram-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(139,92,246,.5)}
+.telegram-btn:hover::before{transform:translateX(100%)}
+
+.hero{max-width:900px;margin:0 auto;padding:60px 24px 40px;text-align:center;position:relative}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:7px 18px;border-radius:30px;background:rgba(251,191,36,.08);border:1px solid rgba(251,191,36,.3);color:var(--accent);font-size:12px;font-weight:700;margin-bottom:22px;animation:floatBadge 3s ease-in-out infinite}
+@keyframes floatBadge{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+.hero h1{font-size:clamp(30px,5vw,52px);font-weight:900;line-height:1.15;margin-bottom:16px;letter-spacing:-.02em}
+.hero h1 span{background:var(--grad-primary);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;background-size:200% 200%;animation:gradientMove 4s ease infinite}
+@keyframes gradientMove{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+.hero p{color:var(--text-muted);font-size:15px;max-width:600px;margin:0 auto}
+.hero-stats{display:flex;justify-content:center;gap:36px;margin-top:36px;flex-wrap:wrap}
+.stat{text-align:center}
+.stat-num{font-size:26px;font-weight:900;background:var(--grad-primary);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;line-height:1}
+.stat-label{font-size:11.5px;color:var(--text-muted);font-weight:600;margin-top:6px;display:block}
+
+.controls{max-width:1280px;margin:0 auto 40px;padding:0 24px}
+.search-card{background:rgba(13,13,30,.6);border:1px solid var(--border);border-radius:var(--radius);padding:18px;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+.search-wrapper{position:relative;margin-bottom:14px}
+.search-icon{position:absolute;right:20px;top:50%;transform:translateY(-50%);color:var(--text-dim);font-size:16px;pointer-events:none;transition:color var(--t)}
+.search-input{width:100%;background:rgba(0,0,0,.35);border:1px solid var(--border);border-radius:var(--radius-md);padding:15px 52px 15px 18px;color:#fff;font-family:inherit;font-size:14.5px;outline:none;transition:var(--t)}
+.search-input::placeholder{color:var(--text-dim)}
+.search-input:focus{border-color:var(--primary);background:rgba(0,0,0,.5);box-shadow:0 0 0 4px rgba(139,92,246,.1)}
+.search-wrapper:focus-within .search-icon{color:var(--primary)}
+
+.filters{display:flex;gap:8px;flex-wrap:wrap}
+.filter{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--border);background:rgba(0,0,0,.3);color:var(--text-muted);padding:9px 18px;border-radius:30px;cursor:pointer;font-size:13px;font-weight:600;transition:var(--t);white-space:nowrap}
+.filter:hover{border-color:var(--border-strong);color:var(--text);background:rgba(139,92,246,.08)}
+.filter.active{background:var(--grad-primary);color:#fff;border-color:transparent;box-shadow:0 4px 16px rgba(139,92,246,.4)}
+
+.leagues{max-width:1280px;margin:0 auto 40px;padding:0 24px}
+.section-title{display:flex;align-items:center;gap:10px;font-size:20px;font-weight:800;margin-bottom:18px}
+.section-title i{color:var(--accent);font-size:18px}
+.league-box{background:rgba(13,13,30,.5);border:1px solid var(--border);border-radius:var(--radius);padding:22px;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+.leagues-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:14px}
+.league{display:flex;flex-direction:column;align-items:center;text-align:center;padding:18px 12px;background:rgba(0,0,0,.3);border:1px solid transparent;border-radius:var(--radius-md);transition:var(--t);cursor:pointer}
+.league:hover{background:rgba(139,92,246,.08);border-color:var(--border-strong);transform:translateY(-4px);box-shadow:0 10px 30px rgba(139,92,246,.15)}
+.league img{width:52px;height:52px;object-fit:contain;margin-bottom:10px;filter:drop-shadow(0 4px 12px rgba(0,0,0,.4));transition:var(--t)}
+.league:hover img{transform:scale(1.1)}
+.league strong{font-size:12.5px;font-weight:700;display:block;margin-bottom:2px}
+.league small{color:var(--text-dim);font-size:10.5px;font-weight:500}
+
+.apps-section{max-width:1280px;margin:0 auto;padding:0 24px 60px}
+.apps-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;flex-wrap:wrap;gap:10px}
+.results-count{color:var(--text-muted);font-size:12.5px;font-weight:500}
+.results-count b{color:var(--accent)}
+
+.apps-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px}
+
+.app-card{position:relative;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:22px;display:flex;flex-direction:column;transition:var(--t);overflow:hidden;animation:fadeInUp .5s backwards}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.app-card::before{content:'';position:absolute;inset:0;border-radius:inherit;padding:1.5px;background:var(--grad-primary);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:opacity var(--t);pointer-events:none}
+.app-card:hover{transform:translateY(-6px);background:var(--card-hover);box-shadow:0 20px 50px rgba(0,0,0,.5),0 0 40px rgba(139,92,246,.12)}
+.app-card:hover::before{opacity:1}
+
+.ribbon{position:absolute;top:16px;left:-34px;transform:rotate(-45deg);background:var(--grad-gold);color:#0a0a14;width:120px;text-align:center;font-size:10px;font-weight:900;padding:4px 0;letter-spacing:.3px;z-index:2;box-shadow:0 4px 12px rgba(251,191,36,.4)}
+
+.app-icon{width:64px;height:64px;border-radius:18px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:26px;margin-bottom:16px;box-shadow:0 8px 24px rgba(0,0,0,.35);position:relative;overflow:hidden}
+.app-icon::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.2),transparent 60%);pointer-events:none}
+
+.app-title{font-size:16px;font-weight:800;margin-bottom:6px;line-height:1.3}
+.app-desc{color:var(--text-muted);font-size:12.5px;line-height:1.65;margin-bottom:14px;min-height:42px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.app-meta{display:inline-flex;align-items:center;gap:6px;background:rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.05);border-radius:10px;padding:7px 12px;font-size:11px;color:var(--text-muted);font-weight:600;margin-bottom:14px;align-self:flex-start}
+.app-meta i{color:var(--accent);font-size:10px}
+
+.app-actions{display:flex;flex-direction:column;gap:8px;margin-top:auto}
+
+.btn{width:100%;border:none;border-radius:12px;padding:11px;font-family:inherit;font-size:13px;font-weight:700;cursor:pointer;text-decoration:none;text-align:center;transition:var(--t);display:flex;align-items:center;justify-content:center;gap:7px;position:relative;overflow:hidden}
+.btn i{font-size:12px}
+.btn-download{color:#fff;background:var(--grad-cta);box-shadow:0 6px 20px rgba(239,68,68,.25)}
+.btn-download:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(239,68,68,.4)}
+.btn-code{background:rgba(251,191,36,.08);color:var(--accent);border:1px solid rgba(251,191,36,.3)}
+.btn-code:hover{background:rgba(251,191,36,.15);border-color:var(--accent)}
+.btn-player{background:rgba(6,182,212,.08);color:#67e8f9;border:1px solid rgba(6,182,212,.3)}
+.btn-player:hover{background:rgba(6,182,212,.15);border-color:var(--primary-2)}
+
+.no-results{grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--text-muted)}
+.no-results i{font-size:48px;color:var(--text-dim);margin-bottom:16px;opacity:.5}
+.no-results p{font-size:15px;font-weight:600}
+
+.modal{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(0,0,0,.8);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);opacity:0;pointer-events:none;transition:opacity var(--t)}
+.modal.show{opacity:1;pointer-events:auto}
+.modal-box{width:min(440px,100%);background:var(--bg-elev);border:1px solid var(--border-strong);border-radius:24px;overflow:hidden;position:relative;transform:scale(.92) translateY(20px);transition:transform var(--t);box-shadow:var(--shadow-lg),0 0 80px rgba(139,92,246,.2)}
+.modal.show .modal-box{transform:scale(1) translateY(0)}
+.modal-hero{height:170px;background:linear-gradient(135deg,#1a1040,#0a1628);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.modal-hero::before{content:'';position:absolute;width:200px;height:200px;background:radial-gradient(circle,rgba(139,92,246,.4),transparent 70%);border-radius:50%;top:-50%;right:-20%;filter:blur(20px)}
+.modal-hero i{font-size:64px;color:var(--accent);filter:drop-shadow(0 8px 24px rgba(251,191,36,.5));position:relative;z-index:1}
+.close-btn{position:absolute;top:14px;left:14px;width:36px;height:36px;border-radius:50%;border:none;background:rgba(0,0,0,.5);color:#fff;cursor:pointer;z-index:2;display:flex;align-items:center;justify-content:center;transition:var(--t);backdrop-filter:blur(10px)}
+.close-btn:hover{background:rgba(244,63,94,.8);transform:rotate(90deg)}
+.modal-content{padding:24px;text-align:center}
+.modal-content h3{font-size:20px;font-weight:800;margin-bottom:8px}
+.modal-content p{color:var(--text-muted);font-size:13px;line-height:1.7;margin-bottom:18px}
+.modal-buttons{display:flex;flex-direction:column;gap:10px}
+
+.toast{position:fixed;bottom:30px;left:50%;transform:translate(-50%,120px);background:var(--bg-elev);border:1px solid var(--border-strong);padding:13px 24px;border-radius:14px;color:var(--text);display:flex;align-items:center;gap:10px;z-index:2000;opacity:0;transition:all .35s cubic-bezier(.4,0,.2,1);box-shadow:var(--shadow-lg);font-size:13.5px;font-weight:600;max-width:calc(100% - 40px)}
+.toast.show{transform:translate(-50%,0);opacity:1}
+.toast i{color:var(--success);font-size:16px}
+
+.top-btn{position:fixed;bottom:24px;left:24px;width:46px;height:46px;border-radius:50%;border:1px solid var(--border-strong);background:var(--bg-elev);color:var(--primary);cursor:pointer;display:none;z-index:500;align-items:center;justify-content:center;transition:var(--t);box-shadow:var(--shadow)}
+.top-btn.show{display:flex}
+.top-btn:hover{background:var(--grad-primary);color:#fff;transform:translateY(-4px);box-shadow:0 10px 30px rgba(139,92,246,.4)}
+
+footer{border-top:1px solid var(--border);background:rgba(6,6,15,.8);padding:28px 24px;text-align:center;color:var(--text-muted);font-size:12.5px}
+footer strong{color:var(--text);font-weight:700}
+footer .footer-accent{background:var(--grad-primary);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;font-weight:800}
+
+@media(max-width:768px){
+    .nav{padding:12px 16px}
+    .hero{padding:40px 16px 30px}
+    .hero-stats{gap:24px;margin-top:28px}
+    .stat-num{font-size:22px}
+    .controls,.leagues,.apps-section{padding-left:16px;padding-right:16px}
+    .leagues-grid{grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:10px}
+    .league{padding:14px 8px}
+    .league img{width:42px;height:42px}
+    .league strong{font-size:11px}
+    .league small{font-size:9.5px}
+}
+@media(max-width:640px){
+    .brand-text span{display:none}
+    .online{padding:7px 12px;font-size:11px}
+    .telegram-btn{padding:8px 14px;font-size:11.5px}
+    .telegram-btn .btn-label{display:none}
+    .apps-grid{grid-template-columns:repeat(2,1fr);gap:12px}
+    .app-card{padding:16px}
+    .app-icon{width:52px;height:52px;font-size:22px;border-radius:14px;margin-bottom:12px}
+    .app-title{font-size:14px}
+    .app-desc{font-size:11px;min-height:36px;-webkit-line-clamp:2}
+    .app-meta{font-size:10px;padding:5px 10px}
+    .btn{font-size:11.5px;padding:10px 8px}
+    .section-title{font-size:16px}
+    .filters{gap:6px}
+    .filter{font-size:11.5px;padding:7px 14px}
+}
+@media(max-width:420px){
+    .apps-grid{grid-template-columns:1fr}
+    .app-desc{min-height:auto}
 }
 </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
+<div class="bg-orbs">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+</div>
+
 <header class="header">
     <nav class="nav">
         <div class="brand">
@@ -566,118 +242,114 @@ footer {
             </div>
         </div>
         <div class="nav-actions">
-            <div class="online"><i class="fas fa-circle"></i><span id="onlineCount">1</span> نشط</div>
+            <div class="online">
+                <span class="online-dot"></span>
+                <span id="onlineCount">1</span>
+                <span>نشط</span>
+            </div>
             <a class="telegram-btn" href="https://t.me/X_9_KK" target="_blank" rel="noopener">
-                <i class="fab fa-telegram-plane"></i> القناة
+                <i class="fab fa-telegram-plane"></i>
+                <span class="btn-label">القناة</span>
             </a>
         </div>
     </nav>
 </header>
 
-<!-- HERO -->
 <section class="hero">
-    <div class="channel-badge"><i class="fas fa-crown"></i> المتجر الرسمي</div>
+    <div class="hero-badge"><i class="fas fa-crown"></i> المتجر الرسمي</div>
     <h1>متجر التطبيقات <span>السريع والبسيط</span></h1>
-    <p>جميع تطبيقات الشاشات، الرياضة، والسينما المباشرة بين يديك.</p>
+    <p>جميع تطبيقات الشاشات، الرياضة، والسينما المباشرة بين يديك — بأفضل جودة وأسرع تحميل.</p>
+    <div class="hero-stats">
+        <div class="stat">
+            <div class="stat-num" id="statApps">30+</div>
+            <span class="stat-label">تطبيق متاح</span>
+        </div>
+        <div class="stat">
+            <div class="stat-num">6</div>
+            <span class="stat-label">دوريات عالمية</span>
+        </div>
+        <div class="stat">
+            <div class="stat-num">24/7</div>
+            <span class="stat-label">تحديث مستمر</span>
+        </div>
+    </div>
 </section>
 
-<!-- SEARCH -->
-<section class="search-area">
-    <div class="search-box">
-        <div class="search-input-wrapper">
-            <i class="fas fa-search search-icon"></i>
+<section class="controls">
+    <div class="search-card">
+        <div class="search-wrapper">
             <input id="searchInput" class="search-input" type="search" placeholder="ابحث عن تطبيق أو كود...">
+            <i class="fas fa-search search-icon"></i>
         </div>
         <div class="filters">
-            <button class="filter active" data-filter="all">الكل</button>
-            <button class="filter" data-filter="tv">TV</button>
-            <button class="filter" data-filter="sport">الرياضة</button>
-            <button class="filter" data-filter="cinema">السينما</button>
-            <button class="filter" data-filter="mediafire">MediaFire</button>
-            <button class="filter" data-filter="vpn">VPN</button>
+            <button class="filter active" data-filter="all"><i class="fas fa-th-large"></i> الكل</button>
+            <button class="filter" data-filter="tv"><i class="fas fa-tv"></i> TV</button>
+            <button class="filter" data-filter="sport"><i class="fas fa-futbol"></i> الرياضة</button>
+            <button class="filter" data-filter="cinema"><i class="fas fa-film"></i> السينما</button>
+            <button class="filter" data-filter="mediafire"><i class="fas fa-fire"></i> MediaFire</button>
+            <button class="filter" data-filter="vpn"><i class="fas fa-shield-halved"></i> VPN</button>
         </div>
     </div>
 </section>
 
-<!-- LEAGUES -->
 <section class="leagues">
+    <div class="section-title"><i class="fas fa-trophy"></i> الدوريات المميزة</div>
     <div class="league-box">
-        <div class="champions-top">
-            <img src="https://media.api-sports.io/football/leagues/2.png" alt="دوري أبطال أوروبا">
-            <strong>دوري أبطال أوروبا</strong>
-        </div>
-        <div class="champions-line"></div>
         <div class="leagues-grid">
-            <div class="league">
-                <img src="https://media.api-sports.io/football/leagues/39.png" alt="الدوري الإنجليزي">
-                <strong>الدوري الإنجليزي</strong>
-                <small>Premier League</small>
-            </div>
-            <div class="league">
-                <img src="https://media.api-sports.io/football/leagues/140.png" alt="الدوري الإسباني">
-                <strong>الدوري الإسباني</strong>
-                <small>LaLiga</small>
-            </div>
-            <div class="league">
-                <img src="https://media.api-sports.io/football/leagues/135.png" alt="الدوري الإيطالي">
-                <strong>الدوري الإيطالي</strong>
-                <small>Serie A</small>
-            </div>
-            <div class="league">
-                <img src="https://media.api-sports.io/football/leagues/78.png" alt="الدوري الألماني">
-                <strong>الدوري الألماني</strong>
-                <small>Bundesliga</small>
-            </div>
-            <div class="league">
-                <img src="https://media.api-sports.io/football/leagues/61.png" alt="الدوري الفرنسي">
-                <strong>الدوري الفرنسي</strong>
-                <small>Ligue 1</small>
-            </div>
+            <div class="league"><img src="https://media.api-sports.io/football/leagues/2.png" alt="أبطال أوروبا"><strong>أبطال أوروبا</strong><small>Champions League</small></div>
+            <div class="league"><img src="https://media.api-sports.io/football/leagues/39.png" alt="الإنجليزي"><strong>الإنجليزي</strong><small>Premier League</small></div>
+            <div class="league"><img src="https://media.api-sports.io/football/leagues/140.png" alt="الإسباني"><strong>الإسباني</strong><small>LaLiga</small></div>
+            <div class="league"><img src="https://media.api-sports.io/football/leagues/135.png" alt="الإيطالي"><strong>الإيطالي</strong><small>Serie A</small></div>
+            <div class="league"><img src="https://media.api-sports.io/football/leagues/78.png" alt="الألماني"><strong>الألماني</strong><small>Bundesliga</small></div>
+            <div class="league"><img src="https://media.api-sports.io/football/leagues/61.png" alt="الفرنسي"><strong>الفرنسي</strong><small>Ligue 1</small></div>
         </div>
     </div>
 </section>
 
-<!-- APPS -->
 <section class="apps-section">
+    <div class="apps-header">
+        <div class="section-title" style="margin:0"><i class="fas fa-mobile-screen-button"></i> التطبيقات</div>
+        <div class="results-count">عرض <b id="resultCount">30</b> تطبيق</div>
+    </div>
     <div id="appsGrid" class="apps-grid"></div>
 </section>
 
-<!-- MODAL -->
 <div class="modal" id="downloadModal">
     <div class="modal-box">
-        <button class="close-btn" id="modalClose"><i class="fas fa-xmark"></i></button>
-        <div class="kane-image">
-            <img src="harry-kane-ballon.jpg" alt="هاري كين" onerror="this.parentElement.style.display='none'">
-        </div>
+        <button class="close-btn" id="modalClose" aria-label="إغلاق"><i class="fas fa-xmark"></i></button>
+        <div class="modal-hero"><i class="fas fa-download"></i></div>
         <div class="modal-content">
-            <h3>قناة تطبيقات عبود</h3>
-            <p>انضم لقناتنا الرسمية للحصول على أحدث الأكواد والتحديثات المباشرة.</p>
+            <h3>ابدأ التحميل الآن</h3>
+            <p>انضم إلى قناتنا الرسمية للحصول على أحدث الأكواد والتحديثات المباشرة، أو تابع التحميل المباشر.</p>
             <div class="modal-buttons">
                 <a class="btn btn-download" href="https://t.me/X_9_KK" target="_blank" rel="noopener">
                     <i class="fab fa-telegram-plane"></i> فتح القناة الرسمية
                 </a>
                 <button class="btn btn-player" id="modalDirect">
-                    <i class="fas fa-download"></i> التحميل المباشر
+                    <i class="fas fa-bolt"></i> التحميل المباشر
                 </button>
             </div>
         </div>
     </div>
 </div>
 
-<button class="top-btn" id="topBtn"><i class="fas fa-arrow-up"></i></button>
+<div class="toast" id="toast">
+    <i class="fas fa-check-circle"></i>
+    <span id="toastText">تم النسخ</span>
+</div>
+
+<button class="top-btn" id="topBtn" aria-label="العودة للأعلى"><i class="fas fa-arrow-up"></i></button>
 
 <footer>
-    جميع الحقوق محفوظة © <span id="year"></span> | <strong>متجر تطبيقات عبود</strong>
+    جميع الحقوق محفوظة © <span id="year"></span> · <span class="footer-accent">متجر تطبيقات عبود</span>
 </footer>
 
-<!-- Firebase -->
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
 
 <script>
 const tgLink = "https://t.me/X_9_KK";
 
-// Firebase Setup
 const firebaseConfig = {
     apiKey: "AIzaSyBx7GqI2AFtLF3UEWiHOvZDXQyAZPMApm4",
     authDomain: "my-store-6ce96.firebaseapp.com",
@@ -687,7 +359,6 @@ const firebaseConfig = {
     messagingSenderId: "1059623236982",
     appId: "1:1059623236982:web:f457e405b040083044b657"
 };
-
 try {
     firebase.initializeApp(firebaseConfig);
     const db = firebase.database();
@@ -695,13 +366,12 @@ try {
     const myConnection = connectionsRef.push();
     myConnection.onDisconnect().remove();
     myConnection.set(true);
-    connectionsRef.on("value", (snap) => {
-        const count = snap.numChildren();
-        document.getElementById("onlineCount").textContent = count > 0 ? count : 1;
+    connectionsRef.on("value", snap => {
+        const c = snap.numChildren();
+        document.getElementById("onlineCount").textContent = c > 0 ? c : 1;
     });
-} catch(e) { console.log("Firebase error:", e); }
+} catch(e) { console.log("Firebase:", e); }
 
-// Apps Data
 const apps = [
     { title:"Yacine TV", desc:"التطبيق الشهير لمشاهدة المباريات والبث المباشر.", icon:"fa-futbol", tags:["tv","sport"], meta:"TV | APK", link:"https://mqj20.github.io/mqj/Yassin_TV.apk", player:"https://mqj20.github.io/mqj/YTV%20PRO.apk", featured:true },
     { title:"Plasma 4K", desc:"تطبيق لمشاهدة محتوى عالي الجودة مخصص للشاشات الذكية.", icon:"fa-tv", tags:["tv","mediafire"], meta:"APK | MediaFire", link:"https://www.mediafire.com/file/olv216ud3p7jfg3/Plasma4K_V2.4.apk/file" },
@@ -735,76 +405,95 @@ const apps = [
     { title:"Alwan Sports", desc:"تطبيق رياضي لمتابعة المباريات والبث المباشر.", icon:"fa-trophy", tags:["sport","tv","mediafire"], meta:"APK | MediaFire", link:"https://www.mediafire.com/file/vyejtivz1mu8g8f/Alwan+Sports.apk/file" }
 ];
 
-const appsGrid = document.getElementById("appsGrid");
-let pendingLink = "";
-
-function renderApps(list) {
-    if (!list.length) {
-        appsGrid.innerHTML = `
-            <div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--text-muted);">
-                <i class="fas fa-search" style="font-size: 32px; margin-bottom: 10px;"></i>
-                <p>لم يتم العثور على أية نتائج</p>
-            </div>`;
-        return;
-    }
-
-    appsGrid.innerHTML = list.map((app, index) => `
-        <article class="app-card">
-            ${app.featured ? `<div class="ribbon">مميز</div>` : ''}
-            <div class="app-header">
-                <div class="app-icon"><i class="fas ${app.icon}"></i></div>
-                <div class="app-title">${app.title}</div>
-                <div class="app-desc">${app.desc}</div>
-            </div>
-            <div>
-                <div class="app-meta"><i class="fas fa-tag"></i> ${app.meta}</div>
-                <div class="app-actions">
-                    <button class="btn btn-download" onclick="downloadApp(${index})">
-                        <i class="fas fa-download"></i> تحميل
-                    </button>
-                    ${app.code ? `<button class="btn btn-code" onclick="copyCode('${app.code}')"><i class="fas fa-key"></i> ${app.code}</button>` : ''}
-                    ${app.player ? `<a class="btn btn-player" href="${app.player}" target="_blank" rel="noopener"><i class="fas fa-play"></i> المشغل</a>` : ''}
-                </div>
-            </div>
-        </article>
-    `).join("");
+const iconGradients = {
+    tv: "linear-gradient(135deg,#3b82f6,#1d4ed8)",
+    sport: "linear-gradient(135deg,#10b981,#047857)",
+    cinema: "linear-gradient(135deg,#a855f7,#7c3aed)",
+    vpn: "linear-gradient(135deg,#06b6d4,#0891b2)",
+    mediafire: "linear-gradient(135deg,#f59e0b,#d97706)"
+};
+function getIconGradient(app){
+    const main = app.tags.find(t => t !== "mediafire") || app.tags[0];
+    return iconGradients[main] || "linear-gradient(135deg,#8b5cf6,#6d28d9)";
 }
 
-// Controls & Handlers
-window.downloadApp = function(index) {
+const appsGrid = document.getElementById("appsGrid");
+const resultCount = document.getElementById("resultCount");
+let pendingLink = "";
+
+function renderApps(list){
+    resultCount.textContent = list.length;
+    if (!list.length){
+        appsGrid.innerHTML = `<div class="no-results"><i class="fas fa-magnifying-glass"></i><p>لم يتم العثور على أية نتائج</p></div>`;
+        return;
+    }
+    appsGrid.innerHTML = list.map((app, i) => {
+        const globalIndex = apps.indexOf(app);
+        return `
+        <article class="app-card" style="animation-delay:${Math.min(i*0.03,0.6)}s">
+            ${app.featured ? `<div class="ribbon">مميز</div>` : ""}
+            <div class="app-icon" style="background:${getIconGradient(app)}">
+                <i class="fas ${app.icon}"></i>
+            </div>
+            <div class="app-title">${app.title}</div>
+            <div class="app-desc">${app.desc}</div>
+            <div class="app-meta"><i class="fas fa-tag"></i> ${app.meta}</div>
+            <div class="app-actions">
+                <button class="btn btn-download" onclick="downloadApp(${globalIndex})">
+                    <i class="fas fa-download"></i> تحميل
+                </button>
+                ${app.code ? `<button class="btn btn-code" onclick="copyCode('${app.code}')"><i class="fas fa-key"></i> ${app.code}</button>` : ""}
+                ${app.player ? `<a class="btn btn-player" href="${app.player}" target="_blank" rel="noopener"><i class="fas fa-play"></i> المشغل</a>` : ""}
+            </div>
+        </article>`;
+    }).join("");
+}
+
+const modal = document.getElementById("downloadModal");
+function openModal(){ modal.classList.add("show"); document.body.style.overflow = "hidden"; }
+function closeModal(){ modal.classList.remove("show"); document.body.style.overflow = ""; }
+
+window.downloadApp = function(index){
     pendingLink = apps[index].link || tgLink;
     openModal();
 };
 
-const modal = document.getElementById("downloadModal");
-function openModal() { modal.classList.add("show"); document.body.style.overflow = "hidden"; }
-function closeModal() { modal.classList.remove("show"); document.body.style.overflow = ""; }
-
 document.getElementById("modalClose").addEventListener("click", closeModal);
-modal.addEventListener("click", (e) => { if(e.target === modal) closeModal(); });
-document.addEventListener("keydown", (e) => { if(e.key === "Escape") closeModal(); });
+modal.addEventListener("click", e => { if (e.target === modal) closeModal(); });
+document.addEventListener("keydown", e => { if (e.key === "Escape") closeModal(); });
 
 document.getElementById("modalDirect").addEventListener("click", () => {
     window.open(pendingLink || tgLink, "_blank", "noopener");
 });
 
-window.copyCode = function(code) {
-    navigator.clipboard.writeText(code).then(() => {
-        alert("تم نسخ الكود: " + code);
-    }).catch(() => {
-        prompt("نسخ الكود:", code);
-    });
+const toast = document.getElementById("toast");
+const toastText = document.getElementById("toastText");
+let toastTimer;
+function showToast(msg){
+    toastText.textContent = msg;
+    toast.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toast.classList.remove("show"), 2400);
+}
+
+window.copyCode = function(code){
+    if (navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(code)
+            .then(() => showToast("تم نسخ الكود: " + code))
+            .catch(() => showToast("الكود: " + code));
+    } else {
+        showToast("الكود: " + code);
+    }
 };
 
-// Search & Filter Filter Logic
 const searchInput = document.getElementById("searchInput");
 const filterButtons = document.querySelectorAll(".filter");
 let currentFilter = "all";
 
-function filterApps() {
-    const query = searchInput.value.trim().toLowerCase();
+function filterApps(){
+    const q = searchInput.value.trim().toLowerCase();
     const filtered = apps.filter(app => {
-        const textMatch = (app.title + " " + app.desc + " " + (app.code || "")).toLowerCase().includes(query);
+        const textMatch = (app.title + " " + app.desc + " " + (app.code || "")).toLowerCase().includes(q);
         const tagMatch = currentFilter === "all" || app.tags.includes(currentFilter);
         return textMatch && tagMatch;
     });
@@ -821,18 +510,15 @@ filterButtons.forEach(btn => {
     });
 });
 
-// Scroll to top button
 const topBtn = document.getElementById("topBtn");
 window.addEventListener("scroll", () => {
-    topBtn.classList.toggle("show", window.scrollY > 400);
-});
+    topBtn.classList.toggle("show", window.scrollY > 500);
+}, { passive: true });
 topBtn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
 
-// Auto Update Year
 document.getElementById("year").textContent = new Date().getFullYear();
-
-// Init
+document.getElementById("statApps").textContent = apps.length + "+";
 renderApps(apps);
 </script>
 </body>
-</html>
+    </html>
