@@ -161,7 +161,6 @@ button{font-family:inherit}
 .btn-player{background:rgba(6,182,212,.08);color:#67e8f9;border:1px solid rgba(6,182,212,.3)}
 .btn-player:hover{background:rgba(6,182,212,.15);border-color:var(--primary-2)}
 
-/* عرض رمز التفعيل أسفل زر التحميل */
 .app-code-display{
     display:flex;align-items:center;justify-content:center;gap:8px;
     background:rgba(251,191,36,.1);
@@ -174,7 +173,7 @@ button{font-family:inherit}
 .app-code-display:hover{background:rgba(251,191,36,.2);border-color:var(--accent);transform:translateY(-1px)}
 .app-code-display i{font-size:11px}
 .app-code-display .label{color:var(--text-muted);font-weight:600;font-size:11px}
-.app-code-display b{font-family:'Cairo',monospace;letter-spacing:1.5px;font-size:14px;color:#fff}
+.app-code-display b{font-family:'Cairo',monospace;letter-spacing:1px;font-size:13px;color:#fff}
 .app-code-display .copy-ico{opacity:.65;font-size:10px;margin-right:2px}
 
 .no-results{grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--text-muted)}
@@ -250,7 +249,7 @@ footer .footer-accent{background:var(--grad-primary);-webkit-background-clip:tex
     .filter{font-size:11.5px;padding:7px 14px}
     .new-badge{font-size:8.5px;padding:3px 8px;top:12px;right:12px}
     .app-code-display{font-size:11px;padding:8px;gap:6px}
-    .app-code-display b{font-size:12.5px}
+    .app-code-display b{font-size:11.5px}
 }
 @media(max-width:420px){
     .apps-grid{grid-template-columns:1fr}
@@ -296,7 +295,7 @@ footer .footer-accent{background:var(--grad-primary);-webkit-background-clip:tex
     <p>جميع تطبيقات الشاشات، الرياضة، والسينما المباشرة بين يديك — بأفضل جودة وأسرع تحميل.</p>
     <div class="hero-stats">
         <div class="stat">
-            <div class="stat-num" id="statApps">22+</div>
+            <div class="stat-num" id="statApps">26+</div>
             <span class="stat-label">تطبيق متاح</span>
         </div>
         <div class="stat">
@@ -331,7 +330,7 @@ footer .footer-accent{background:var(--grad-primary);-webkit-background-clip:tex
     <div class="section-title"><i class="fas fa-trophy"></i> الدوريات المميزة</div>
     <div class="league-box">
         <div class="leagues-grid">
-            <div class="league" onclick="openLeagueLiveStats('CL', 'أابطال أوروبا', 'https://media.api-sports.io/football/leagues/2.png')">
+            <div class="league" onclick="openLeagueLiveStats('CL', 'أبطال أوروبا', 'https://media.api-sports.io/football/leagues/2.png')">
                 <img src="https://media.api-sports.io/football/leagues/2.png" alt="أبطال أوروبا">
                 <strong>أبطال أوروبا</strong><small>Champions League</small>
             </div>
@@ -362,7 +361,7 @@ footer .footer-accent{background:var(--grad-primary);-webkit-background-clip:tex
 <section class="apps-section">
     <div class="apps-header">
         <div class="section-title" style="margin:0"><i class="fas fa-mobile-screen-button"></i> التطبيقات</div>
-        <div class="results-count">عرض <b id="resultCount">22</b> تطبيق</div>
+        <div class="results-count">عرض <b id="resultCount">26</b> تطبيق</div>
     </div>
     <div id="appsGrid" class="apps-grid"></div>
 </section>
@@ -541,11 +540,15 @@ document.getElementById("leagueModalClose").addEventListener("click", () => {
 leagueModal.addEventListener("click", e => { if (e.target === leagueModal) { leagueModal.classList.remove("show"); document.body.style.overflow = ""; } });
 
 const apps = [
-    // --- التطبيقات الجديدة ---
+    // --- التطبيقات المضافة والحديثة ---
+    { title:"عراق بلس", desc:"تطبيق للبث المباشر والقنوات الرياضية والترفيهية.", icon:"fa-globe", tags:["tv","sport","mediafire"], meta:"Q1..Q4 | APK", code:"Q1--Q2--Q3--Q4", link:tgLink, isNew:true, featured:true },
+    { title:"كوباني 4K", desc:"تطبيق بث مباشر عالي الدقة بأسلوب مميز.", icon:"fa-display", tags:["tv","cinema","mediafire"], meta:"2121 | APK", code:"2121", link:"https://www.mediafire.com/file/0rz6thhnse7jxo1/KOBANI+4K_2.0.1.apk/file", isNew:true, featured:true },
+    { title:"بالتسعين", desc:"تطبيق رياضي لمتابعة أهم المباريات والبث المباشر.", icon:"fa-stopwatch-20", tags:["sport","tv","mediafire"], meta:"APK | MediaFire", link:"https://www.mediafire.com/file/ee46gh6m4ddtktp/BALTIS3EEN.apk/file", isNew:true, featured:true },
+    { title:"1 IRAQ TV v5", desc:"تطبيق عراقي مميز للبث المباشر والقنوات الرياضية والترفيهية.", icon:"fa-tv", tags:["tv","sport","mediafire"], meta:"APK | MediaFire", link:"https://www.mediafire.com/file/l8w6ykn8lsv33nx/1+IRAQ+TV+_v5.apk/file", isNew:true },
+    { title:"ALBASHA TV v6", desc:"تطبيق الباشا للبث المباشر بمجموعات قنوات متنوعة.", icon:"fa-crown", tags:["tv","cinema","mediafire"], meta:"APK | MediaFire", link:"https://www.mediafire.com/file/093e7jc7lmpfbjt/ALBASHA_TV_V6.0.5.apk/file", isNew:true },
     { title:"Original TV", desc:"تطبيق للبث المباشر والقنوات التلفزيونية والترفيهية.", icon:"fa-tv", tags:["tv","mediafire"], meta:"APK | MediaFire", link:"https://www.mediafire.com/file/ls91eg9nt7u30im/Original+TV.apk/file", isNew:true },
-    { title:"عائلتنا TV", desc:"تطبيق عائلي مميز للبث المباشر والمشاهدة.", icon:"fa-users-between-lines", tags:["tv","cinema","mediafire"], meta:"APK | MediaFire", link:"https://www.mediafire.com/file/x6o153zie2d5b33/عائلتناtv.apk/file", isNew:true, featured:true },
+    { title:"عائلتنا TV", desc:"تطبيق عائلي مميز للبث المباشر والمشاهدة.", icon:"fa-users-between-lines", tags:["tv","cinema","mediafire"], meta:"APK | MediaFire", link:"https://www.mediafire.com/file/x6o153zie2d5b33/عائلتناtv.apk/file", isNew:true },
     { title:"Kidn TV v3", desc:"تطبيق للبث المباشر والمشاهدة بجودة ممتازة.", icon:"fa-child-reaching", tags:["tv","mediafire"], meta:"21 | APK", code:"21", link:"https://www.mediafire.com/file/07fbm5f5ntrfe7t/kidntvv3.apk/file", isNew:true },
-    { title:"كوباني 4K", desc:"تطبيق بث مباشر عالي الدقة بأسلوب مميز.", icon:"fa-display", tags:["tv","cinema","mediafire"], meta:"2121 | APK", code:"2121", link:"https://t.me/X_9_KK", isNew:true, featured:true },
 
     // --- بقية التطبيقات ---
     { title:"Alwan Sports", desc:"تطبيق رياضي لمتابعة المباريات والبث المباشر.", icon:"fa-trophy", tags:["sport","tv","mediafire"], meta:"APK | MediaFire", link:"https://www.mediafire.com/file/vyejtivz1mu8g8f/Alwan+Sports.apk/file" },
