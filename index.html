@@ -296,7 +296,7 @@ footer .footer-accent{background:var(--grad-primary);-webkit-background-clip:tex
     <p>جميع تطبيقات الشاشات، الرياضة، والسينما المباشرة بين يديك — بأفضل جودة وأسرع تحميل.</p>
     <div class="hero-stats">
         <div class="stat">
-            <div class="stat-num" id="statApps">18+</div>
+            <div class="stat-num" id="statApps">22+</div>
             <span class="stat-label">تطبيق متاح</span>
         </div>
         <div class="stat">
@@ -331,7 +331,7 @@ footer .footer-accent{background:var(--grad-primary);-webkit-background-clip:tex
     <div class="section-title"><i class="fas fa-trophy"></i> الدوريات المميزة</div>
     <div class="league-box">
         <div class="leagues-grid">
-            <div class="league" onclick="openLeagueLiveStats('CL', 'أبطال أوروبا', 'https://media.api-sports.io/football/leagues/2.png')">
+            <div class="league" onclick="openLeagueLiveStats('CL', 'أابطال أوروبا', 'https://media.api-sports.io/football/leagues/2.png')">
                 <img src="https://media.api-sports.io/football/leagues/2.png" alt="أبطال أوروبا">
                 <strong>أبطال أوروبا</strong><small>Champions League</small>
             </div>
@@ -362,7 +362,7 @@ footer .footer-accent{background:var(--grad-primary);-webkit-background-clip:tex
 <section class="apps-section">
     <div class="apps-header">
         <div class="section-title" style="margin:0"><i class="fas fa-mobile-screen-button"></i> التطبيقات</div>
-        <div class="results-count">عرض <b id="resultCount">18</b> تطبيق</div>
+        <div class="results-count">عرض <b id="resultCount">22</b> تطبيق</div>
     </div>
     <div id="appsGrid" class="apps-grid"></div>
 </section>
@@ -418,7 +418,6 @@ footer .footer-accent{background:var(--grad-primary);-webkit-background-clip:tex
 <script>
 const tgLink = "https://t.me/X_9_KK";
 
-// مفتاح API الخاص بك المدمج بالكامل
 const FOOTBALL_API_KEY = "56374cf7f0214d88887a400d12d79809"; 
 
 const firebaseConfig = {
@@ -448,7 +447,6 @@ const leagueModalImg = document.getElementById("leagueModalImg");
 const leagueModalTitle = document.getElementById("leagueModalTitle");
 const leagueModalBody = document.getElementById("leagueModalBody");
 
-/* دالة جلب الإحصائيات المباشرة اللحظية عبر API ومعالجة مشكلة CORS */
 async function openLeagueLiveStats(code, title, logo) {
     leagueModalImg.src = logo;
     leagueModalTitle.textContent = title;
@@ -543,24 +541,30 @@ document.getElementById("leagueModalClose").addEventListener("click", () => {
 leagueModal.addEventListener("click", e => { if (e.target === leagueModal) { leagueModal.classList.remove("show"); document.body.style.overflow = ""; } });
 
 const apps = [
-    // --- التطبيقات المتوفرة في مجلد الميديافاير فقط ---
+    // --- التطبيقات الجديدة ---
+    { title:"Original TV", desc:"تطبيق للبث المباشر والقنوات التلفزيونية والترفيهية.", icon:"fa-tv", tags:["tv","mediafire"], meta:"APK | MediaFire", link:"https://www.mediafire.com/file/ls91eg9nt7u30im/Original+TV.apk/file", isNew:true },
+    { title:"عائلتنا TV", desc:"تطبيق عائلي مميز للبث المباشر والمشاهدة.", icon:"fa-users-between-lines", tags:["tv","cinema","mediafire"], meta:"APK | MediaFire", link:"https://www.mediafire.com/file/x6o153zie2d5b33/عائلتناtv.apk/file", isNew:true, featured:true },
+    { title:"Kidn TV v3", desc:"تطبيق للبث المباشر والمشاهدة بجودة ممتازة.", icon:"fa-child-reaching", tags:["tv","mediafire"], meta:"21 | APK", code:"21", link:"https://www.mediafire.com/file/07fbm5f5ntrfe7t/kidntvv3.apk/file", isNew:true },
+    { title:"كوباني 4K", desc:"تطبيق بث مباشر عالي الدقة بأسلوب مميز.", icon:"fa-display", tags:["tv","cinema","mediafire"], meta:"2121 | APK", code:"2121", link:"https://t.me/X_9_KK", isNew:true, featured:true },
+
+    // --- بقية التطبيقات ---
     { title:"Alwan Sports", desc:"تطبيق رياضي لمتابعة المباريات والبث المباشر.", icon:"fa-trophy", tags:["sport","tv","mediafire"], meta:"APK | MediaFire", link:"https://www.mediafire.com/file/vyejtivz1mu8g8f/Alwan+Sports.apk/file" },
-    { title:"GO TV MAX", desc:"تطبيق شامل للبث المباشر والأفلام والمسلسلات.", icon:"fa-meteor", tags:["tv","cinema","mediafire"], meta:"APK | MediaFire", link:"https://www.mediafire.com/file/8wvl3k8y7yxei7s/app_GOTVMAX_3.3v.apk/file", isNew:true, featured:true },
-    { title:"Arigo TV", desc:"تطبيق بث مباشر بنسخة Infinity للمشاهدة السلسة.", icon:"fa-play", tags:["tv","cinema","mediafire"], meta:"APK | MediaFire", link:"https://www.mediafire.com/file/93404gxz0g5bkqg/Arigo_7.0.1_infinity.apk/file", isNew:true },
-    { title:"باب المشاهد", desc:"تطبيق شامل للأفلام والمسلسلات والبث المباشر.", icon:"fa-door-open", tags:["cinema","tv","mediafire"], meta:"APK | MediaFire", link:"https://www.mediafire.com/file/apchqkpvq4367eg/bab-elmoshahd-1.6.3.apk/file", isNew:true, featured:true },
+    { title:"GO TV MAX", desc:"تطبيق شامل للبث المباشر والأفلام والمسلسلات.", icon:"fa-meteor", tags:["tv","cinema","mediafire"], meta:"APK | MediaFire", link:"https://www.mediafire.com/file/8wvl3k8y7yxei7s/app_GOTVMAX_3.3v.apk/file", featured:true },
+    { title:"Arigo TV", desc:"تطبيق بث مباشر بنسخة Infinity للمشاهدة السلسة.", icon:"fa-play", tags:["tv","cinema","mediafire"], meta:"APK | MediaFire", link:"https://www.mediafire.com/file/93404gxz0g5bkqg/Arigo_7.0.1_infinity.apk/file" },
+    { title:"باب المشاهد", desc:"تطبيق شامل للأفلام والمسلسلات والبث المباشر.", icon:"fa-door-open", tags:["cinema","tv","mediafire"], meta:"APK | MediaFire", link:"https://www.mediafire.com/file/apchqkpvq4367eg/bab-elmoshahd-1.6.3.apk/file", featured:true },
     { title:"سينمانا", desc:"منصة لمشاهدة الأفلام والمسلسلات.", icon:"fa-clapperboard", tags:["cinema","mediafire"], meta:"APK | MediaFire", link:"https://www.mediafire.com/file/u7kt0x9ilgaqhpw/com.shabakaty.cinemana-5.3.3.apk/file" },
-    { title:"Flash TV", desc:"تطبيق سريع للبث المباشر والقنوات المتنوعة.", icon:"fa-bolt-lightning", tags:["tv","mediafire"], meta:"APK | MediaFire", link:"https://www.mediafire.com/file/e9bpts1txfez9w6/FLASH+TV.apk/file", isNew:true },
+    { title:"Flash TV", desc:"تطبيق سريع للبث المباشر والقنوات المتنوعة.", icon:"fa-bolt-lightning", tags:["tv","mediafire"], meta:"APK | MediaFire", link:"https://www.mediafire.com/file/e9bpts1txfez9w6/FLASH+TV.apk/file" },
     { title:"GENRAL TV", desc:"تطبيق للمشاهدة والبث المباشر.", icon:"fa-desktop", tags:["tv","mediafire"], meta:"APK | MediaFire", link:"https://www.mediafire.com/file/itrckpb02uho76n/GENRAL+TV_2.19.apk/file" },
     { title:"Goal Live VIP", desc:"تطبيق رياضي يعمل بمختلف الجودات حسب سرعة الإنترنت.", icon:"fa-futbol", tags:["sport","mediafire"], meta:"APK | MediaFire", link:"https://www.mediafire.com/file/tdbijxtqink9bij/Goal+Live+VIP.apk/file" },
-    { title:"Iraq Max Pro", desc:"تطبيق عراقي للبث المباشر والمشاهدة بجودات عالية.", icon:"fa-satellite", tags:["tv","sport","mediafire"], meta:"APK | MediaFire", link:"https://www.mediafire.com/file/bxtnv4r61mxnq5t/iraq+max+pro.apk/file", isNew:true },
-    { title:"Lion Ultra", desc:"نسخة Infinity بدون تسجيل دخول لمشاهدة القنوات.", icon:"fa-paw", tags:["tv","sport","mediafire"], meta:"APK | MediaFire", link:"https://www.mediafire.com/file/lztu7be4wz56qs3/Lion+Ultra_4.3_infinity_no_login.apk/file", isNew:true },
-    { title:"Milano TV", desc:"تطبيق إيطالي للبث المباشر بجودة عالية.", icon:"fa-tv", tags:["tv","mediafire"], meta:"APK | MediaFire", link:"https://www.mediafire.com/file/a17nzk0zotrra4r/Milano+TV.apk/file", isNew:true },
-    { title:"New Project 6", desc:"تطبيق حديث للبث المباشر والقنوات المتنوعة.", icon:"fa-rocket", tags:["tv","mediafire"], meta:"APK | MediaFire", link:"https://www.mediafire.com/file/cm2l24k21pfa16e/NewProject6_release.apk/file", isNew:true, featured:true },
+    { title:"Iraq Max Pro", desc:"تطبيق عراقي للبث المباشر والمشاهدة بجودات عالية.", icon:"fa-satellite", tags:["tv","sport","mediafire"], meta:"APK | MediaFire", link:"https://www.mediafire.com/file/bxtnv4r61mxnq5t/iraq+max+pro.apk/file" },
+    { title:"Lion Ultra", desc:"نسخة Infinity بدون تسجيل دخول لمشاهدة القنوات.", icon:"fa-paw", tags:["tv","sport","mediafire"], meta:"APK | MediaFire", link:"https://www.mediafire.com/file/lztu7be4wz56qs3/Lion+Ultra_4.3_infinity_no_login.apk/file" },
+    { title:"Milano TV", desc:"تطبيق إيطالي للبث المباشر بجودة عالية.", icon:"fa-tv", tags:["tv","mediafire"], meta:"APK | MediaFire", link:"https://www.mediafire.com/file/a17nzk0zotrra4r/Milano+TV.apk/file" },
+    { title:"New Project 6", desc:"تطبيق حديث للبث المباشر والقنوات المتنوعة.", icon:"fa-rocket", tags:["tv","mediafire"], meta:"APK | MediaFire", link:"https://www.mediafire.com/file/cm2l24k21pfa16e/NewProject6_release.apk/file", featured:true },
     { title:"Prom", desc:"تطبيق للمشاهدة والبث.", icon:"fa-play", tags:["tv","mediafire"], meta:"APK | MediaFire", link:"https://www.mediafire.com/file/aq5yf391mzct2lx/Prom.apk/file" },
     { title:"كوديا سبورت", desc:"تطبيق رياضي لمتابعة المباريات والقنوات الرياضية.", icon:"fa-futbol", tags:["sport","mediafire"], meta:"APK | MediaFire", link:"https://www.mediafire.com/file/jn1myb8xii72vk0/كوديا+سبورت.apk/file" },
-    { title:"Vega TV", desc:"تطبيق بث مباشر بقنوات متعددة وجودات متنوعة.", icon:"fa-star-of-life", tags:["tv","mediafire"], meta:"APK | MediaFire", link:"https://www.mediafire.com/file/2lr0ttu6mzbf3wb/Vega_5.2.2.apk/file", isNew:true },
+    { title:"Vega TV", desc:"تطبيق بث مباشر بقنوات متعددة وجودات متنوعة.", icon:"fa-star-of-life", tags:["tv","mediafire"], meta:"APK | MediaFire", link:"https://www.mediafire.com/file/2lr0ttu6mzbf3wb/Vega_5.2.2.apk/file" },
     { title:"vpnify", desc:"تطبيق VPN لتغيير الاتصال وحماية الخصوصية.", icon:"fa-shield-halved", tags:["vpn","mediafire"], meta:"VPN | APK", link:"https://www.mediafire.com/file/29r9kddhwgo2dvr/vpnify.apk/file" },
-    { title:"العبودي TV", desc:"تطبيق بث مباشر للمشاهدة والترفيه بجميع القنوات.", icon:"fa-crown", tags:["tv","sport","mediafire"], meta:"APK | MediaFire", link:"https://www.mediafire.com/file/b8nf4nednosuzx0/العبودي+TV_1.2+(1).apk/file", isNew:true, featured:true },
+    { title:"العبودي TV", desc:"تطبيق بث مباشر للمشاهدة والترفيه بجميع القنوات.", icon:"fa-crown", tags:["tv","sport","mediafire"], meta:"APK | MediaFire", link:"https://www.mediafire.com/file/b8nf4nednosuzx0/العبودي+TV_1.2+(1).apk/file", featured:true },
     { title:"الريان (Rayan TV)", desc:"تطبيق للبث المباشر والقنوات الرياضية والترفيهية.", icon:"fa-satellite-dish", tags:["tv","sport","mediafire"], meta:"R1..R7 | APK", code:"R1..R7", link:"https://www.mediafire.com/file/0lvkzv6nydfqln9/ريانRayan-tv.apk/file" }
 ];
 
@@ -700,4 +704,4 @@ document.getElementById("statApps").textContent = apps.length + "+";
 renderApps(apps);
 </script>
 </body>
-    </html>
+</html>
