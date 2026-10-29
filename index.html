@@ -1,1019 +1,340 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#08081a">
-
-<title>متجر عبود — تطبيقات TV والرياضة</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>MQJ LIVE</title>
+<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 <style>
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-:root {
-  --bg: #070712;
-  --card: #11112a;
-  --border: rgba(255, 255, 255, .08);
-  --border2: rgba(139, 92, 246, .25);
-  --p: #8b5cf6;
-  --p2: #06b6d4;
-  --gold: #fbbf24;
-  --ok: #10b981;
-  --text: #f8fafc;
-  --muted: #9aa3b8;
-  --dim: #6b728a;
-  --r: 18px;
-  --rm: 14px;
-}
-
-html {
-  scroll-behavior: smooth;
-  -webkit-tap-highlight-color: transparent;
-  scrollbar-gutter: stable;
-}
-
-body {
-  font-family: "Cairo", system-ui, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  min-height: 100vh;
-  line-height: 1.6;
-  overflow-x: hidden;
-  text-rendering: optimizeSpeed;
-  -webkit-font-smoothing: antialiased;
-}
-
-img {
-  display: block;
-  max-width: 100%;
-}
-
-button, a {
-  font-family: inherit;
-}
-
-:focus-visible {
-  outline: 3px solid var(--p);
-  outline-offset: 3px;
-  border-radius: 8px;
-}
-
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  background: 
-    radial-gradient(600px 600px at 85% -10%, rgba(139, 92, 246, .18), transparent 60%),
-    radial-gradient(500px 500px at 5% 90%, rgba(6, 182, 212, .14), transparent 60%),
-    radial-gradient(400px 400px at 50% 50%, rgba(251, 191, 36, .06), transparent 60%),
-    var(--bg);
-}
-
-.header {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: rgba(7, 7, 18, .92);
-  border-bottom: 1px solid var(--border);
-}
-
-@supports (backdrop-filter: blur(12px)) {
-  .header {
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    background: rgba(7, 7, 18, .75);
-  }
-}
-
-.nav {
-  max-width: 1320px;
-  margin: auto;
-  padding: 12px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-}
-
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 11px;
-}
-
-.brand-icon {
-  width: 42px;
-  height: 42px;
-  border-radius: 12px;
-  background: linear-gradient(135deg, #8b5cf6, #06b6d4);
-  display: grid;
-  place-items: center;
-  color: #fff;
-  font-size: 18px;
-  flex-shrink: 0;
-}
-
-.brand-text h2 {
-  font-size: 16px;
-  font-weight: 900;
-  line-height: 1;
-}
-
-.brand-text span {
-  color: var(--muted);
-  font-size: 11px;
-}
-
-.nav-actions {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.online {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 12px;
-  border: 1px solid rgba(16, 185, 129, .3);
-  border-radius: 99px;
-  font-size: 11px;
-  font-weight: 700;
-  background: rgba(16, 185, 129, .1);
-  color: #6ee7b7;
-}
-
-.online-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--ok);
-  box-shadow: 0 0 8px var(--ok);
-}
-
-.tg {
-  color: #fff;
-  background: linear-gradient(135deg, #8b5cf6, #06b6d4);
-  padding: 8px 16px;
-  border-radius: 99px;
-  font-size: 12px;
-  font-weight: 800;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  text-decoration: none;
-  transition: .2s;
-}
-
-.tg:active {
-  transform: scale(.96);
-}
-
-.hero {
-  max-width: 860px;
-  margin: 0 auto;
-  padding: 42px 20px 28px;
-  text-align: center;
-}
-
-.hero-badge {
-  display: inline-flex;
-  gap: 6px;
-  align-items: center;
-  padding: 5px 14px;
-  border-radius: 99px;
-  background: rgba(251, 191, 36, .1);
-  border: 1px solid rgba(251, 191, 36, .25);
-  color: var(--gold);
-  font-size: 11px;
-  font-weight: 800;
-  margin-bottom: 14px;
-}
-
-.hero h1 {
-  font-size: clamp(28px, 5vw, 48px);
-  font-weight: 900;
-  line-height: 1.15;
-  margin-bottom: 10px;
-}
-
-.hero h1 span {
-  background: linear-gradient(135deg, #8b5cf6, #06b6d4);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.hero p {
-  color: var(--muted);
-  font-size: 14px;
-  max-width: 560px;
-  margin: 0 auto;
-}
-
-.hero-stats {
-  display: flex;
-  justify-content: center;
-  gap: 28px;
-  margin-top: 22px;
-}
-
-.stat-num {
-  font-size: 22px;
-  font-weight: 900;
-  color: #fff;
-  line-height: 1;
-}
-
-.stat-label {
-  font-size: 10.5px;
-  color: var(--muted);
-  margin-top: 4px;
-  display: block;
-  font-weight: 600;
-}
-
-.controls {
-  max-width: 1320px;
-  margin: 0 auto 28px;
-  padding: 0 20px;
-}
-
-.search-card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--r);
-  padding: 14px;
-}
-
-.search-wrap {
-  position: relative;
-  margin-bottom: 12px;
-}
-
-.search-input {
-  width: 100%;
-  background: #08081a;
-  border: 1px solid var(--border);
-  border-radius: var(--rm);
-  padding: 13px 46px 13px 14px;
-  color: #fff;
-  font-size: 14px;
-  outline: none;
-  transition: .18s;
-}
-
-.search-input:focus {
-  border-color: var(--p);
-  box-shadow: 0 0 0 3px rgba(139, 92, 246, .15);
-}
-
-.search-icon {
-  position: absolute;
-  right: 16px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--dim);
-  pointer-events: none;
-}
-
-.filters {
-  display: flex;
-  gap: 7px;
-  flex-wrap: wrap;
-}
-
-.filter {
-  border: 1px solid var(--border);
-  background: #08081a;
-  color: var(--muted);
-  padding: 7px 14px;
-  border-radius: 99px;
-  cursor: pointer;
-  font-size: 12px;
-  font-weight: 700;
-  transition: .18s;
-  white-space: nowrap;
-}
-
-.filter.active {
-  background: #fff;
-  color: #000;
-  border-color: #fff;
-}
-
-.leagues {
-  max-width: 1320px;
-  margin: 0 auto 28px;
-  padding: 0 20px;
-}
-
-.section-title {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 16px;
-  font-weight: 800;
-  margin-bottom: 12px;
-}
-
-.section-title i {
-  color: var(--gold);
-}
-
-.league-box {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--r);
-  padding: 14px;
-}
-
-.leagues-grid {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 10px;
-}
-
-@media(max-width: 900px) {
-  .leagues-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-.league {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 12px 6px;
-  background: #0c0c20;
-  border: 1px solid transparent;
-  border-radius: var(--rm);
-  transition: .18s;
-  cursor: pointer;
-  min-width: 0;
-}
-
-.league:hover {
-  border-color: var(--border2);
-  transform: translateY(-2px);
-}
-
-.league-logo-wrap {
-  width: 56px;
-  height: 56px;
-  border-radius: 12px;
-  background: #fff;
-  display: grid;
-  place-items: center;
-  padding: 7px;
-  margin-bottom: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, .35);
-  overflow: hidden;
-}
-
-.league-logo-wrap img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-.league strong {
-  font-size: 11px;
-  font-weight: 800;
-}
-
-.league small {
-  color: var(--dim);
-  font-size: 9.5px;
-}
-
-.apps-section {
-  max-width: 1320px;
-  margin: 0 auto;
-  padding: 0 20px 50px;
-}
-
-.apps-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 12px;
-}
-
-.results {
-  color: var(--muted);
-  font-size: 12px;
-}
-
-.results b {
-  color: var(--gold);
-}
-
-.apps-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 14px;
-}
-
-@media(max-width: 640px) {
-  .apps-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-  }
-}
-
-.app-card {
-  position: relative;
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--r);
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  transition: transform .18s, border-color .18s;
-}
-
-.app-card:hover {
-  transform: translateY(-3px);
-  border-color: rgba(255, 255, 255, .12);
-}
-
-.ribbon {
-  position: absolute;
-  top: 12px;
-  left: -28px;
-  transform: rotate(-45deg);
-  background: linear-gradient(135deg, #fbbf24, #f59e0b);
-  color: #000;
-  width: 100px;
-  text-align: center;
-  font-size: 9px;
-  font-weight: 900;
-  padding: 3px 0;
-  z-index: 1;
-}
-
-.new-badge {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  background: #10b981;
-  color: #fff;
-  font-size: 8.5px;
-  font-weight: 900;
-  padding: 3px 8px;
-  border-radius: 99px;
-  z-index: 1;
-}
-
-.app-icon {
-  width: 54px;
-  height: 54px;
-  border-radius: 14px;
-  display: grid;
-  place-items: center;
-  color: #fff;
-  font-size: 22px;
-  margin-bottom: 12px;
-}
-
-.app-title {
-  font-size: 14.5px;
-  font-weight: 800;
-  margin-bottom: 4px;
-}
-
-.app-desc {
-  color: var(--muted);
-  font-size: 12px;
-  line-height: 1.5;
-  margin-bottom: 10px;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  min-height: 36px;
-}
-
-.app-meta {
-  display: inline-flex;
-  gap: 5px;
-  align-items: center;
-  background: rgba(0, 0, 0, .35);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 5px 9px;
-  font-size: 10px;
-  color: var(--muted);
-  font-weight: 700;
-  margin-bottom: 12px;
-  align-self: flex-start;
-}
-
-.app-actions {
-  display: flex;
-  flex-direction: column;
-  gap: 7px;
-  margin-top: auto;
-}
-
-.btn {
-  width: 100%;
-  border: none;
-  border-radius: 11px;
-  padding: 11px;
-  font-size: 12.5px;
-  font-weight: 800;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  text-decoration: none;
-  transition: .18s;
-}
-
-.btn-dl {
-  color: #fff;
-  background: linear-gradient(135deg, #f59e0b, #ef4444);
-}
-
-.btn-player {
-  background: rgba(6, 182, 212, .12);
-  color: #22d3ee;
-  border: 1px solid rgba(6, 182, 212, .25);
-}
-
-.code-box {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  background: rgba(251, 191, 36, .08);
-  border: 1px dashed rgba(251, 191, 36, .35);
-  border-radius: 10px;
-  padding: 9px;
-  font-size: 11px;
-  font-weight: 700;
-  color: var(--gold);
-  cursor: pointer;
-}
-
-.code-box b {
-  color: #fff;
-  font-family: monospace;
-}
-
-.modal {
-  position: fixed;
-  inset: 0;
-  z-index: 200;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 16px;
-  background: rgba(0, 0, 0, .72);
-  opacity: 0;
-  pointer-events: none;
-  transition: .2s;
-}
-
-.modal.show {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.modal-box {
-  width: min(440px, 100%);
-  background: #11112a;
-  border: 1px solid var(--border2);
-  border-radius: 20px;
-  overflow: hidden;
-}
-
-.modal-hero {
-  height: 100px;
-  background: linear-gradient(135deg, #1a1040, #0a1628);
-  display: grid;
-  place-items: center;
-}
-
-.close {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  border: none;
-  background: rgba(0, 0, 0, .5);
-  color: #fff;
-  cursor: pointer;
-}
-
-.modal-content {
-  padding: 20px;
-  text-align: center;
-}
-
-.toast {
-  position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translate(-50%, 120px);
-  background: #171732;
-  border: 1px solid var(--border);
-  padding: 10px 18px;
-  border-radius: 12px;
-  color: #fff;
-  z-index: 300;
-  opacity: 0;
-  transition: .25s;
-  font-size: 12px;
-}
-
-.toast.show {
-  transform: translate(-50%, 0);
-  opacity: 1;
-}
-
-.top {
-  position: fixed;
-  bottom: 18px;
-  left: 18px;
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  background: #11112a;
-  color: var(--p);
-  border: 1px solid var(--border);
-  display: none;
-  place-items: center;
-  cursor: pointer;
-}
-
-.top.show {
-  display: grid;
-}
-
-footer {
-  border-top: 1px solid var(--border);
-  padding: 20px;
-  text-align: center;
-  color: var(--muted);
-  font-size: 11px;
-}
+*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,Tahoma,sans-serif}
+:root{--bg:#070b12;--card:#101722;--border:rgba(255,255,255,.09);--blue:#19a7ff;--blue2:#087bd0;--text:#fff;--muted:#8e9aaa;--green:#20d68a;--red:#ff4d5f}
+body{background:radial-gradient(circle at top,#10243a 0,#070b12 45%);color:var(--text);min-height:100vh}
+header{position:sticky;top:0;z-index:1000;background:rgba(7,11,18,.94);backdrop-filter:blur(18px);border-bottom:1px solid var(--border);padding:13px}
+.header-row{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.logo{font-size:23px;font-weight:900}.logo span{color:var(--blue)}
+.status{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--muted)}
+.status-dot{width:8px;height:8px;border-radius:50%;background:#777}.status-dot.online{background:var(--green);box-shadow:0 0 12px var(--green)}.status-dot.error{background:var(--red)}
+.settings,.player-area,.controls,.categories,.main{max-width:1100px;margin-left:auto;margin-right:auto}
+.settings{margin-top:15px;padding:14px;background:rgba(16,23,34,.88);border:1px solid var(--border);border-radius:15px}
+.settings-title{font-size:15px;font-weight:800;margin-bottom:12px}
+.form-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr auto;gap:8px}
+input{width:100%;border:1px solid var(--border);outline:none;background:#0b111b;color:white;border-radius:10px;padding:12px;font-size:14px}
+input:focus{border-color:var(--blue)}
+.connect-btn{background:linear-gradient(135deg,var(--blue),var(--blue2));color:#fff;border-radius:10px;padding:0 18px;font-weight:800;white-space:nowrap;border:0;cursor:pointer}
+.message{margin-top:10px;font-size:13px;color:var(--muted);min-height:18px}
+.player-area{padding:0 13px;margin-top:15px}
+.player{position:relative;width:100%;background:#000;border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.08);box-shadow:0 15px 45px rgba(0,0,0,.5)}
+video{width:100%;aspect-ratio:16/9;display:block;background:#000}
+.now-playing{padding:11px 13px;background:#0e151f;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.now-name{font-weight:800;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.live{color:#ff5364;font-size:11px;font-weight:900}
+.controls{padding:0 13px;margin-top:15px}.search{position:relative}.search input{padding-right:43px;background:#0e151f}.search-icon{position:absolute;right:14px;top:50%;transform:translateY(-50%);color:var(--muted)}
+.categories{padding:0 13px;margin-top:12px;display:flex;gap:7px;overflow-x:auto;scrollbar-width:none}.categories::-webkit-scrollbar{display:none}
+.cat{flex:0 0 auto;background:#111a27;border:1px solid var(--border);color:#dce5ef;border-radius:30px;padding:9px 14px;font-size:12px;cursor:pointer}.cat.active{background:var(--blue);color:white;border-color:var(--blue)}
+.main{padding:0 13px 40px}.section-head{display:flex;justify-content:space-between;align-items:center;margin:18px 0 10px}.section-head h2{font-size:16px}.count{color:var(--muted);font-size:12px}
+.channels{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}
+.channel{background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.018));border:1px solid var(--border);border-radius:13px;padding:11px;display:flex;align-items:center;gap:10px;min-height:68px;transition:.18s;cursor:pointer}
+.channel:active{transform:scale(.98)}.channel-logo{width:43px;height:43px;border-radius:10px;background:#0a1018;object-fit:contain;flex-shrink:0}.channel-info{min-width:0;flex:1}
+.channel-name{font-size:13px;font-weight:800;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.channel-group{color:var(--muted);font-size:10px;margin-top:5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.play-btn{width:34px;height:34px;border-radius:50%;background:#142638;color:#fff;flex-shrink:0;border:0;cursor:pointer}.play-btn:hover{background:var(--blue)}
+.empty{text-align:center;padding:45px 20px;color:var(--muted);display:none}.empty-icon{font-size:40px;margin-bottom:10px}
+.loading{position:fixed;inset:0;background:rgba(0,0,0,.7);backdrop-filter:blur(8px);z-index:5000;display:none;align-items:center;justify-content:center}
+.loader-box{background:#101722;border:1px solid var(--border);border-radius:16px;padding:25px 30px;text-align:center}.spinner{width:38px;height:38px;border:4px solid #263242;border-top-color:var(--blue);border-radius:50%;animation:spin .8s linear infinite;margin:auto auto 12px}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media(max-width:700px){.form-grid{grid-template-columns:1fr 1fr}.form-grid input:first-child{grid-column:1/-1}.connect-btn{height:45px;grid-column:1/-1}}
+@media(max-width:450px){.channels{grid-template-columns:1fr}.logo{font-size:20px}}
 </style>
 </head>
-
 <body>
 
-<header class="header">
-  <nav class="nav">
-    <div class="brand">
-      <div class="brand-icon"><i class="fas fa-store"></i></div>
-      <div class="brand-text">
-        <h2>متجر عبود</h2>
-        <span>تطبيقات TV والرياضة</span>
-      </div>
-    </div>
-    <div class="nav-actions">
-      <div class="online">
-        <span class="online-dot"></span>
-        <span id="onlineCount">1</span> نشط
-      </div>
-      <a class="tg" href="https://t.me/X_9_KK" target="_blank"><i class="fab fa-telegram-plane"></i><span>القناة</span></a>
-    </div>
-  </nav>
+<header>
+  <div class="header-row">
+    <div class="logo">MQJ <span>LIVE</span></div>
+    <div class="status"><span id="statusDot" class="status-dot"></span><span id="statusText">غير متصل</span></div>
+  </div>
 </header>
 
-<section class="hero">
-  <div class="hero-badge"><i class="fas fa-bolt"></i> سريع على كل الأجهزة</div>
-  <h1>متجر التطبيقات <span>السريع والخفيف</span></h1>
-  <p>نسخة محسنة 60FPS — تعمل بسلاسة على Android TV و iPhone و Samsung و التابلت والكمبيوتر بدون تقطيع.</p>
-  <div class="hero-stats">
-    <div class="stat"><div class="stat-num" id="statApps">0+</div><span class="stat-label">تطبيق</span></div>
-    <div class="stat"><div class="stat-num">6</div><span class="stat-label">دوريات</span></div>
-    <div class="stat"><div class="stat-num">TV</div><span class="stat-label">محسّن للتلفاز</span></div>
+<section class="settings">
+  <div class="settings-title">⚙️ اتصال IPTV</div>
+  <div class="form-grid">
+    <input id="server" type="text" placeholder="Server">
+    <input id="username" type="text" placeholder="Username">
+    <input id="password" type="password" placeholder="Password">
+    <button class="connect-btn" onclick="connectIPTV()">🔌 اتصال وتحميل القنوات</button>
   </div>
+  <div id="message" class="message">بيانات الحساب محفوظة في هذا الجهاز فقط.</div>
 </section>
 
-<section class="controls">
-  <div class="search-card">
-    <div class="search-wrap">
-      <input id="searchInput" class="search-input" type="search" placeholder="ابحث عن تطبيق أو كود..." autocomplete="off">
-      <i class="fas fa-search search-icon"></i>
-    </div>
-    <div class="filters">
-      <button class="filter active" data-filter="all"><i class="fas fa-th-large"></i> الكل</button>
-      <button class="filter" data-filter="tv"><i class="fas fa-tv"></i> TV</button>
-      <button class="filter" data-filter="sport"><i class="fas fa-futbol"></i> رياضة</button>
-      <button class="filter" data-filter="cinema"><i class="fas fa-film"></i> سينما</button>
-      <button class="filter" data-filter="mediafire"><i class="fas fa-fire"></i> MediaFire</button>
-      <button class="filter" data-filter="vpn"><i class="fas fa-shield-halved"></i> VPN</button>
+<section class="player-area">
+  <div class="player">
+    <video id="video" controls playsinline preload="metadata"></video>
+    <div class="now-playing">
+      <div id="nowPlaying" class="now-name">لم يتم اختيار قناة</div>
+      <div class="live">● LIVE</div>
     </div>
   </div>
 </section>
 
-<section class="leagues">
-  <div class="section-title"><i class="fas fa-trophy"></i> الدوريات والبطولات الكبرى</div>
-  <div class="league-box">
-    <div class="leagues-grid" id="leaguesGrid"></div>
-  </div>
-</section>
-
-<section class="apps-section">
-  <div class="apps-header">
-    <div class="section-title" style="margin:0"><i class="fas fa-mobile-screen-button"></i> التطبيقات</div>
-    <div class="results">عرض <b id="resultCount">0</b></div>
-  </div>
-  <div id="appsGrid" class="apps-grid"></div>
-</section>
-
-<div class="modal" id="downloadModal">
-  <div class="modal-box" style="position:relative">
-    <button class="close" id="modalClose"><i class="fas fa-xmark"></i></button>
-    <div class="modal-hero"><i class="fas fa-download" style="font-size: 40px; color: var(--gold);"></i></div>
-    <div class="modal-content">
-      <h3>جاهز للتحميل؟</h3>
-      <p style="color:var(--muted); font-size:12px; margin-bottom:12px;">انضم للقناة للحصول على الأكواد الجديدة أو حمّل مباشرة.</p>
-
-      <div style="display:flex; flex-direction:column; gap:8px;">
-        <a class="btn btn-dl" href="https://t.me/X_9_KK" target="_blank"><i class="fab fa-telegram-plane"></i> فتح القناة الرسمية</a>
-        <button class="btn btn-player" id="modalDirect"><i class="fas fa-bolt"></i> التحميل المباشر</button>
-      </div>
-    </div>
+<div class="controls">
+  <div class="search">
+    <span class="search-icon">🔎</span>
+    <input id="search" type="search" placeholder="ابحث عن قناة..." oninput="renderChannels()">
   </div>
 </div>
 
-<div class="modal" id="leagueModal">
-  <div class="modal-box" style="position:relative">
-    <button class="close" id="leagueModalClose"><i class="fas fa-xmark"></i></button>
-    <div class="modal-hero">
-      <img id="leagueModalImg" style="max-height:50px; object-fit:contain;">
-    </div>
-    <div class="modal-content">
-      <h3 id="leagueModalTitle"></h3>
-      <div id="leagueModalBody"></div>
-    </div>
+<div id="categories" class="categories"></div>
+
+<main class="main">
+  <div class="section-head">
+    <h2>📺 القنوات</h2>
+    <span id="count" class="count">0 قناة</span>
+  </div>
+  <div id="channels" class="channels"></div>
+  <div id="empty" class="empty"><div class="empty-icon">📡</div><div>لا توجد قنوات مطابقة للبحث.</div></div>
+</main>
+
+<div id="loading" class="loading">
+  <div class="loader-box">
+    <div class="spinner"></div>
+    <div id="loadingText">جاري الاتصال...</div>
   </div>
 </div>
-
-<div class="toast" id="toast"><i class="fas fa-check-circle" style="color:#10b981"></i> <span id="toastText"></span></div>
-<button class="top" id="topBtn"><i class="fas fa-arrow-up"></i></button>
-
-<footer>© <span id="year"></span> <b style="color:#fff">متجر عبود</b> — نسخة V2 خفيفة وسريعة</footer>
-
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
 
 <script>
-const tgLink = "https://t.me/X_9_KK";
-const FOOTBALL_API_KEY = "56374cf7f0214d88887a400d12d79809";
-
-const onlineEl = document.getElementById("onlineCount");
-try {
-  firebase.initializeApp({
-    apiKey: "AIzaSyBx7GqI2AFtLF3UEWiHOvZDXQyAZPMApm4",
-    databaseURL: "https://my-store-6ce96-default-rtdb.firebaseio.com",
-    projectId: "my-store-6ce96"
-  });
-  const ref = firebase.database().ref("online_users");
-  const me = ref.push();
-  me.onDisconnect().remove();
-  me.set(true);
-  ref.on("value", snapshot => {
-    if (onlineEl) onlineEl.textContent = snapshot.numChildren() || 1;
-  });
-} catch(e) {
-  if (onlineEl) onlineEl.textContent = "1";
-}
-
-const leaguesData = [
-  { code:"CL", title:"أبطال أوروبا", en:"Champions League", logo:"https://commons.wikimedia.org/wiki/Special:FilePath/UEFA%20Champions%20League%20logo%20no%20text.svg" },
-  { code:"PD", title:"الإسباني", en:"LaLiga", logo:"https://commons.wikimedia.org/wiki/Special:FilePath/LaLiga%20logo%202023.svg" },
-  { code:"PL", title:"الإنجليزي", en:"Premier League", logo:"https://upload.wikimedia.org/wikipedia/en/f/f2/Premier_League_Logo.svg" },
-  { code:"SA", title:"الإيطالي", en:"Serie A", logo:"https://commons.wikimedia.org/wiki/Special:FilePath/Serie%20A.svg" },
-  { code:"BL1", title:"الألماني", en:"Bundesliga", logo:"https://commons.wikimedia.org/wiki/Special:FilePath/Bundesliga%20logo.svg" },
-  { code:"FL1", title:"الفرنسي", en:"Ligue 1", logo:"https://commons.wikimedia.org/wiki/Special:FilePath/Ligue%201%20Uber%20Eats.svg" }
-];
-
-function logoFallback(img, title) {
-  img.onerror = null;
-  img.style.display = "none";
-  img.parentElement.innerHTML = `<div style="font-size:9px; font-weight:900; color:#111">${title}</div>`;
-}
-
-document.getElementById("leaguesGrid").innerHTML = leaguesData.map(l => `
-  <div class="league" tabindex="0" onclick="openLeagueLiveStats('${l.code}','${l.title}','${l.logo}')">
-    <div class="league-logo-wrap"><img src="${l.logo}" alt="${l.title}" onerror="logoFallback(this,'${l.title}')"></div>
-    <strong>${l.title}</strong><small>${l.en}</small>
-  </div>
-`).join("");
-
-const apps = [
-  { title:"Oscar TV", desc:"تطبيق أوسكار للبث المباشر بجودة عالية وقنوات متعددة.", icon:"fa-tv", tags:["tv","cinema","mediafire"], meta:"APK + مشغل", link:"https://www.mediafire.com/file/dnn5tnjbxmxn2f0/Oscar+TV.apk/file", player:"https://www.mediafire.com/file/xerqu2fzn8dis54/TDM.apk/file", isNew:true, featured:true },
-  { title:"C PLUS v2", desc:"تطبيق سي بلس المطور للبث المباشر والرياضة.", icon:"fa-plus", tags:["tv","sport","mediafire"], meta:"APK + مشغل", link:"https://www.mediafire.com/file/qy4qw60imzqqd53/CPLUS_v2.apk/file", player:"https://www.mediafire.com/file/k864zs0f9wlid1v/C+PLUS+PLAYER.apk/file", isNew:true, featured:true },
-  { title:"تطبيق v7.0.0", desc:"الإصدار الجديد الاسطورة اخر تحديث مدمج بمشغل v7.0.0.", icon:"fa-rocket", tags:["tv","mediafire"], meta:"v7.0.0 | APK", link:"https://www.mediafire.com/file/1anlwbggyqgd639/v7.0.0.apk/file", isNew:true },
-  { title:"عراق بلس", desc:"تطبيق للبث المباشر والقنوات الرياضية والترفيهية.", icon:"fa-globe", tags:["tv","sport","mediafire"], meta:"Q1..Q4 | APK", code:"Q1--Q2--Q3--Q4", link:tgLink, isNew:true, featured:true },
-  { title:"كوباني 4K", desc:"تطبيق بث مباشر عالي الدقة بأسلوب مميز.", icon:"fa-display", tags:["tv","cinema","mediafire"], meta:"2121 | APK", code:"2121", link:"https://www.mediafire.com/file/0rz6thhnse7jxo1/KOBANI+4K_2.0.1.apk/file", isNew:true, featured:true },
-  { title:"بالتسعين", desc:"تطبيق رياضي لمتابعة أهم المباريات والبث المباشر.", icon:"fa-stopwatch-20", tags:["sport","tv","mediafire"], meta:"APK | MediaFire", link:"https://www.mediafire.com/file/ee46gh6m4ddtktp/BALTIS3EEN.apk/file", isNew:true, featured:true },
-  { title:"1 IRAQ TV v5", desc:"تطبيق عراقي مميز للبث المباشر والقنوات الرياضية.", icon:"fa-tv", tags:["tv","sport","mediafire"], meta:"APK | MediaFire", link:"https://www.mediafire.com/file/l8w6ykn8lsv33nx/1+IRAQ+TV+_v5.apk/file", isNew:true },
-  { title:"ALBASHA TV v6", desc:"تطبيق الباشا للبث المباشر بمجموعات قنوات متنوعة.", icon:"fa-crown", tags:["tv","cinema","mediafire"], meta:"APK | MediaFire", link:"https://www.mediafire.com/file/093e7jc7lmpfbjt/ALBASHA_TV_V6.0.5.apk/file", isNew:true },
-  { title:"Original TV", desc:"مدمج بمشغل تطبيق للبث المباشر والقنوات التلفزيونية.", icon:"fa-tv", tags:["tv","mediafire"], meta:"APK | MediaFire", link:"https://www.mediafire.com/file/ls91eg9nt7u30im/Original+TV.apk/file", isNew:true },
-  { title:"عائلتنا TV", desc:"تطبيق عائلي مميز للبث المباشر والمشاهدة.", icon:"fa-users", tags:["tv","cinema","mediafire"], meta:"APK | MediaFire", link:"https://www.mediafire.com/file/x6o153zie2d5b33/عائلتناtv.apk/file", isNew:true },
-  { title:"Kidn TV v3", desc:"تطبيق للبث المباشر والمشاهدة بجودة ممتازة.", icon:"fa-child", tags:["tv","mediafire"], meta:"21 | APK", code:"21", link:"https://www.mediafire.com/file/07fbm5f5ntrfe7t/kidntvv3.apk/file", isNew:true },
-  { title:"Alwan Sports", desc:"تطبيق رياضي لمتابعة المباريات والبث المباشر.", icon:"fa-trophy", tags:["sport","tv","mediafire"], meta:"APK | MediaFire", link:"https://www.mediafire.com/file/vyejtivz1mu8g8f/Alwan+Sports.apk/file" },
-  { title:"GO TV MAX", desc:"تطبيق شامل للبث المباشر والأفلام والمسلسلات.", icon:"fa-meteor", tags:["tv","cinema","mediafire"], meta:"APK | MediaFire", link:"https://www.mediafire.com/file/8wvl3k8y7yxei7s/app_GOTVMAX_3.3v.apk/file", featured:true },
-  { title:"Arigo TV", desc:"تطبيق بث مباشر بنسخة Infinity.", icon:"fa-play", tags:["tv","cinema","mediafire"], meta:"APK | MediaFire", link:"https://www.mediafire.com/file/93404gxz0g5bkqg/Arigo_7.0.1_infinity.apk/file" },
-  { title:"باب المشاهد", desc:"تطبيق شامل للأفلام والمسلسلات والبث المباشر.", icon:"fa-door-open", tags:["cinema","tv","mediafire"], meta:"APK | MediaFire", link:"https://www.mediafire.com/file/apchqkpvq4367eg/bab-elmoshahd-1.6.3.apk/file", featured:true },
-  { title:"سينمانا", desc:"منصة لمشاهدة الأفلام والمسلسلات.", icon:"fa-clapperboard", tags:["cinema","mediafire"], meta:"APK | MediaFire", link:"https://www.mediafire.com/file/u7kt0x9ilgaqhpw/com.shabakaty.cinemana-5.3.3.apk/file" },
-  { title:"Flash TV", desc:"تطبيق سريع للبث المباشر.", icon:"fa-bolt", tags:["tv","mediafire"], meta:"APK | MediaFire", link:"https://www.mediafire.com/file/e9bpts1txfez9w6/FLASH+TV.apk/file" },
-  { title:"GENRAL TV", desc:"تطبيق للمشاهدة والبث المباشر.", icon:"fa-desktop", tags:["tv","mediafire"], meta:"APK | MediaFire", link:"https://www.mediafire.com/file/itrckpb02uho76n/GENRAL+TV_2.19.apk/file" },
-  { title:"Goal Live VIP", desc:"تطبيق رياضي يعمل بمختلف الجودات.", icon:"fa-futbol", tags:["sport","mediafire"], meta:"APK | MediaFire", link:"https://www.mediafire.com/file/tdbijxtqink9bij/Goal+Live+VIP.apk/file" },
-  { title:"Iraq Max Pro", desc:"تطبيق عراقي للبث المباشر والمشاهدة.", icon:"fa-satellite", tags:["tv","sport","mediafire"], meta:"APK | MediaFire", link:"https://www.mediafire.com/file/bxtnv4r61mxnq5t/iraq+max+pro.apk/file" },
-  { title:"Lion Ultra", desc:"نسخة Infinity بدون تسجيل دخول.", icon:"fa-paw", tags:["tv","sport","mediafire"], meta:"APK | MediaFire", link:"https://www.mediafire.com/file/lztu7be4wz56qs3/Lion+Ultra_4.3_infinity_no_login.apk/file" },
-  { title:"Milano TV", desc:"تطبيق إيطالي للبث المباشر.", icon:"fa-tv", tags:["tv","mediafire"], meta:"APK | MediaFire", link:"https://www.mediafire.com/file/a17nzk0zotrra4r/Milano+TV.apk/file" },
-  { title:"New Project 6", desc:"تطبيق حديث للبث المباشر والقنوات المتنوعة.", icon:"fa-rocket", tags:["tv","mediafire"], meta:"APK | MediaFire", link:"https://www.mediafire.com/file/cm2l24k21pfa16e/NewProject6_release.apk/file", featured:true },
-  { title:"Prom", desc:"تطبيق للمشاهدة والبث.", icon:"fa-play", tags:["tv","mediafire"], meta:"APK | MediaFire", link:"https://www.mediafire.com/file/aq5yf391mzct2lx/Prom.apk/file" },
-  { title:"كوديا سبورت", desc:"تطبيق رياضي لمتابعة المباريات والقنوات الرياضية.", icon:"fa-futbol", tags:["sport","mediafire"], meta:"APK | MediaFire", link:"https://www.mediafire.com/file/jn1myb8xii72vk0/كوديا+سبورت.apk/file" },
-  { title:"Vega TV", desc:"تطبيق بث مباشر بقنوات متعددة.", icon:"fa-star", tags:["tv","mediafire"], meta:"APK | MediaFire", link:"https://www.mediafire.com/file/2lr0ttu6mzbf3wb/Vega_5.2.2.apk/file" },
-  { title:"vpnify", desc:"تطبيق VPN لتغيير الاتصال وحماية الخصوصية.", icon:"fa-shield-halved", tags:["vpn","mediafire"], meta:"VPN | APK", link:"https://www.mediafire.com/file/29r9kddhwgo2dvr/vpnify.apk/file" },
-  { title:"العبودي TV", desc:"تطبيق بث مباشر للمشاهدة والترفيه.", icon:"fa-crown", tags:["tv","sport","mediafire"], meta:"APK | MediaFire", link:"https://www.mediafire.com/file/b8nf4nednosuzx0/العبودي+TV_1.2+(1).apk/file", featured:true },
-  { title:"الريان (Rayan TV)", desc:"تطبيق للبث المباشر والقنوات الرياضية.", icon:"fa-satellite-dish", tags:["tv","sport","mediafire"], meta:"R1..R7 | APK", code:"R1..R7", link:"https://www.mediafire.com/file/0lvkzv6nydfqln9/ريانRayan-tv.apk/file" }
-];
-
-const iconGrad = {
-  tv: "linear-gradient(135deg,#3b82f6,#1d4ed8)",
-  sport: "linear-gradient(135deg,#10b981,#047857)",
-  cinema: "linear-gradient(135deg,#a855f7,#7c3aed)",
-  vpn: "linear-gradient(135deg,#06b6d4,#0891b2)",
-  mediafire: "linear-gradient(135deg,#f59e0b,#d97706)"
+const IPTV = {
+  server: "http://pro.prince4k.com:7355",
+  username: "PR2745575399204",
+  password: "3508140413704"
 };
 
-const appsGrid = document.getElementById("appsGrid");
-const resultCount = document.getElementById("resultCount");
-let pendingLink = "";
+let channels=[];
+let currentCategory="ALL";
+let hls=null;
 
-function render(list) {
-  resultCount.textContent = list.length;
-  if (!list.length) {
-    appsGrid.innerHTML = `<div class="no-results"><p>لم يتم العثور على نتائج</p></div>`;
-    return;
+const video=document.getElementById("video");
+const message=document.getElementById("message");
+const statusDot=document.getElementById("statusDot");
+const statusText=document.getElementById("statusText");
+const channelsBox=document.getElementById("channels");
+const countBox=document.getElementById("count");
+const emptyBox=document.getElementById("empty");
+const nowPlaying=document.getElementById("nowPlaying");
+const categoriesBox=document.getElementById("categories");
+
+document.getElementById("server").value=IPTV.server;
+document.getElementById("username").value=IPTV.username;
+document.getElementById("password").value=IPTV.password;
+
+function setMessage(text,type="normal"){
+  message.textContent=text;
+  message.style.color=type==="success"?"#20d68a":type==="error"?"#ff5364":"#8e9aaa";
+}
+function showLoading(text){document.getElementById("loadingText").textContent=text;document.getElementById("loading").style.display="flex"}
+function hideLoading(){document.getElementById("loading").style.display="none"}
+function setStatus(s){
+  statusDot.className="status-dot";
+  if(s==="online"){statusDot.classList.add("online");statusText.textContent="متصل"}
+  else if(s==="error"){statusDot.classList.add("error");statusText.textContent="فشل الاتصال"}
+  else statusText.textContent="غير متصل";
+}
+function normalizeServer(s){return s.trim().replace(/\/+$/,"")}
+
+async function connectIPTV(){
+  const server=normalizeServer(document.getElementById("server").value);
+  const username=document.getElementById("username").value.trim();
+  const password=document.getElementById("password").value.trim();
+
+  if(!server||!username||!password){
+    setMessage("❌ أكمل بيانات السيرفر والحساب.","error");return;
   }
-  appsGrid.innerHTML = list.map(app => {
-    const gi = apps.indexOf(app);
-    return `
-      <article class="app-card" tabindex="0">
-        ${app.featured ? `<div class="ribbon">مميز</div>` : ""}
-        ${app.isNew ? `<div class="new-badge">جديد</div>` : ""}
-        <div class="app-icon" style="background:${iconGrad[app.tags[0]] || iconGrad.tv}">
-          <i class="fas ${app.icon}"></i>
-        </div>
-        <div class="app-title">${app.title}</div>
-        <div class="app-desc">${app.desc}</div>
-        <div class="app-meta"><i class="fas fa-tag"></i>${app.meta}</div>
-        <div class="app-actions">
-          <button class="btn btn-dl" onclick="downloadApp(${gi})"><i class="fas fa-download"></i> تحميل</button>
-          ${app.player ? `<a class="btn btn-player" href="${app.player}" target="_blank"><i class="fas fa-play"></i> المشغل</a>` : ""}
-          ${app.code ? `<div class="code-box" onclick="copyCode('${app.code}')"><i class="fas fa-key"></i> <b>${app.code}</b></div>` : ""}
-        </div>
-      </article>
-    `;
-  }).join("");
+
+  const playlistURL=server+"/get.php?username="+encodeURIComponent(username)+"&password="+encodeURIComponent(password)+"&type=m3u_plus";
+  showLoading("جاري تحميل قائمة القنوات...");
+  setMessage("جاري الاتصال بالسيرفر...");
+  setStatus("");
+
+  try{
+    const response=await fetch(playlistURL,{method:"GET",cache:"no-store"});
+    if(!response.ok) throw new Error("HTTP "+response.status);
+    const text=await response.text();
+
+    if(!text||!text.includes("#EXTM3U")) throw new Error("لم يتم استلام ملف M3U صالح.");
+
+    channels=parseM3U(text);
+    if(!channels.length) throw new Error("القائمة وصلت لكن بدون قنوات.");
+
+    localStorage.setItem("mqj_server",server);
+    localStorage.setItem("mqj_username",username);
+    localStorage.setItem("mqj_password",password);
+
+    setStatus("online");
+    setMessage("✅ تم الاتصال وتحميل "+channels.length+" قناة.","success");
+    buildCategories();
+    renderChannels();
+
+    if(channels[0]) setTimeout(()=>playChannel(channels[0]),300);
+  }catch(error){
+    console.error(error);
+    setStatus("error");
+    setMessage("❌ تعذر جلب القائمة. إذا كانت البيانات صحيحة فغالباً السيرفر يمنع CORS من GitHub Pages.","error");
+    channels=[];
+    renderChannels();
+  }finally{hideLoading()}
 }
 
-const searchInput = document.getElementById("searchInput");
-const filters = document.querySelectorAll(".filter");
-let curFilter = "all";
-
-function doFilter() {
-  const q = searchInput.value.trim().toLowerCase();
-  const f = apps.filter(a => {
-    const txt = (a.title + " " + a.desc + " " + (a.code || "")).toLowerCase().includes(q);
-    const tag = curFilter === "all" || a.tags.includes(curFilter);
-    return txt && tag;
-  });
-  render(f);
+function getAttribute(line,name){
+  const m=line.match(new RegExp(name+'="([^"]*)"',"i"));
+  return m?m[1]:"";
 }
 
-searchInput.addEventListener("input", doFilter);
-filters.forEach(b => {
-  b.addEventListener("click", () => {
-    filters.forEach(x => x.classList.remove("active"));
-    b.classList.add("active");
-    curFilter = b.dataset.filter;
-    doFilter();
+function parseM3U(data){
+  const lines=data.split(/\r?\n/);
+  const result=[];
+  let current=null;
+
+  for(const raw of lines){
+    const line=raw.trim();
+    if(!line) continue;
+
+    if(line.startsWith("#EXTINF:")){
+      const comma=line.indexOf(",");
+      current={
+        name:comma!==-1?line.substring(comma+1).trim():"قناة",
+        group:getAttribute(line,"group-title")||"أخرى",
+        logo:getAttribute(line,"tvg-logo")||"",
+        id:getAttribute(line,"tvg-id")||"",
+        url:""
+      };
+    }else if(current&&!line.startsWith("#")){
+      current.url=line;
+      if(current.url) result.push(current);
+      current=null;
+    }
+  }
+  return result;
+}
+
+function buildCategories(){
+  const groups=[...new Set(channels.map(c=>c.group||"أخرى"))].sort((a,b)=>a.localeCompare(b));
+  categoriesBox.innerHTML="";
+
+  const all=document.createElement("button");
+  all.className="cat active";
+  all.textContent="الكل";
+  all.onclick=function(){setCategory("ALL",this)};
+  categoriesBox.appendChild(all);
+
+  groups.forEach(group=>{
+    const btn=document.createElement("button");
+    btn.className="cat";
+    btn.textContent=group;
+    btn.onclick=function(){setCategory(group,this)};
+    categoriesBox.appendChild(btn);
   });
+}
+
+function setCategory(category,button){
+  currentCategory=category;
+  document.querySelectorAll(".cat").forEach(b=>b.classList.remove("active"));
+  button.classList.add("active");
+  renderChannels();
+}
+
+function renderChannels(){
+  const search=document.getElementById("search").value.trim().toLowerCase();
+  const filtered=channels.filter(ch=>{
+    const name=(ch.name||"").toLowerCase();
+    const group=(ch.group||"").toLowerCase();
+    return (!search||name.includes(search)||group.includes(search))
+      &&(currentCategory==="ALL"||ch.group===currentCategory);
+  });
+
+  channelsBox.innerHTML="";
+  countBox.textContent=filtered.length+" قناة";
+  emptyBox.style.display=filtered.length?"none":"block";
+
+  filtered.forEach(channel=>{
+    const card=document.createElement("div");
+    card.className="channel";
+
+    const img=document.createElement("img");
+    img.className="channel-logo";
+    img.loading="lazy";
+    img.src=channel.logo||"";
+    img.onerror=function(){this.style.visibility="hidden"};
+
+    const info=document.createElement("div");
+    info.className="channel-info";
+
+    const name=document.createElement("div");
+    name.className="channel-name";
+    name.textContent=channel.name;
+
+    const group=document.createElement("div");
+    group.className="channel-group";
+    group.textContent=channel.group;
+
+    info.append(name,group);
+
+    const play=document.createElement("button");
+    play.className="play-btn";
+    play.textContent="▶";
+    play.onclick=e=>{e.stopPropagation();playChannel(channel)};
+
+    card.append(img,info,play);
+    card.onclick=()=>playChannel(channel);
+    channelsBox.appendChild(card);
+  });
+}
+
+function playChannel(channel){
+  if(!channel||!channel.url)return;
+
+  nowPlaying.textContent=channel.name;
+
+  if(hls){try{hls.destroy()}catch(e){} hls=null}
+  video.pause();
+  video.removeAttribute("src");
+
+  const url=channel.url.trim();
+
+  if(url.includes(".m3u8")||url.includes("/hls/")||url.includes("/live/")){
+    if(Hls.isSupported()){
+      hls=new Hls({
+        enableWorker:true,
+        lowLatencyMode:true,
+        backBufferLength:30,
+        manifestLoadingTimeOut:15000,
+        levelLoadingTimeOut:15000,
+        fragLoadingTimeOut:20000
+      });
+      hls.loadSource(url);
+      hls.attachMedia(video);
+      hls.on(Hls.Events.MANIFEST_PARSED,()=>video.play().catch(()=>{}));
+      hls.on(Hls.Events.ERROR,(event,data)=>{
+        console.warn("HLS",data);
+        if(data.fatal)setMessage("⚠️ تعذر تشغيل هذه القناة. قد يكون الرابط منتهيًا أو محميًا.","error");
+      });
+    }else if(video.canPlayType("application/vnd.apple.mpegurl")){
+      video.src=url;
+      video.play().catch(()=>{});
+    }
+  }else{
+    video.src=url;
+    video.play().catch(()=>{});
+  }
+}
+
+window.addEventListener("load",()=>{
+  const s=localStorage.getItem("mqj_server");
+  const u=localStorage.getItem("mqj_username");
+  const p=localStorage.getItem("mqj_password");
+
+  if(s)document.getElementById("server").value=s;
+  if(u)document.getElementById("username").value=u;
+  if(p)document.getElementById("password").value=p;
+
+  connectIPTV();
 });
-
-const modal = document.getElementById("downloadModal");
-function downloadApp(i) {
-  pendingLink = apps[i].link || tgLink;
-  modal.classList.add("show");
-}
-document.getElementById("modalClose").onclick = () => modal.classList.remove("show");
-modal.onclick = (e) => { if (e.target === modal) modal.classList.remove("show"); };
-document.getElementById("modalDirect").onclick = () => { if (pendingLink) window.open(pendingLink, "_blank"); };
-
-const lModal = document.getElementById("leagueModal");
-const leagueCache = {};
-
-async function openLeagueLiveStats(code, title, logo) {
-  document.getElementById("leagueModalImg").src = logo;
-  document.getElementById("leagueModalTitle").textContent = title;
-  lModal.classList.add("show");
-
-  const now = Date.now();
-  if (leagueCache[code] && (now - leagueCache[code].time < 600000)) {
-    renderLeagueModal(leagueCache[code].data, logo);
-    return;
-  }
-
-  document.getElementById("leagueModalBody").innerHTML = `<div style="padding:20px; color:var(--gold);"><i class="fas fa-spinner fa-spin"></i> جاري التحديث...</div>`;
-
-  try {
-    const fetchApi = async (endpoint) => {
-      const url = encodeURIComponent(`https://api.football-data.org/v4/competitions/${code}/${endpoint}`);
-      const res = await fetch(`https://corsproxy.io/?${url}`, { headers: { "X-Auth-Token": FOOTBALL_API_KEY } });
-      return await res.json();
-    };
-
-    const [sD, scD, mD] = await Promise.all([
-      fetchApi("standings"),
-      fetchApi("scorers?limit=1"),
-      fetchApi("matches?status=SCHEDULED&limit=2")
-    ]);
-
-    const compiledData = { sD, scD, mD };
-    leagueCache[code] = { time: now, data: compiledData };
-    renderLeagueModal(compiledData, logo);
-  } catch(e) {
-    document.getElementById("leagueModalBody").innerHTML = `<div style="color:#f43f5e; font-size:12px; padding:15px;">تعذر جلب البيانات حالياً</div>`;
-  }
-}
-
-function renderLeagueModal(data, logo) {
-  const { sD, scD, mD } = data;
-  let leader = sD?.standings?.[0]?.table?.[0]?.team?.name || "غير محدد";
-  let pts = sD?.standings?.[0]?.table?.[0]?.points || 0;
-  let scorer = scD?.scorers?.[0] ? `${scD.scorers[0].player.name} (${scD.scorers[0].goals} هدف)` : "لا يوجد";
-  let matches = mD?.matches?.map(m => `
-    <div style="display:flex; justify-content:space-between; padding:6px; font-size:11px; border-bottom:1px solid #ffffff10;">
-      <span>${m.homeTeam.shortName || m.homeTeam.name} × ${m.awayTeam.shortName || m.awayTeam.name}</span>
-      <span style="color:#22d3ee">${new Date(m.utcDate).toLocaleDateString("ar-EG")}</span>
-    </div>
-  `).join("") || "لا توجد مباريات قريبًا";
-
-  document.getElementById("leagueModalBody").innerHTML = `
-    <div style="background:rgba(0,0,0,.3); padding:10px; border-radius:10px; margin-bottom:8px; text-align:right;">
-      <div style="font-size:11px; color:var(--gold);">المتصدر الحالي: <b>${leader}</b> (${pts} نقطة)</div>
-    </div>
-    <div style="background:rgba(0,0,0,.3); padding:10px; border-radius:10px; margin-bottom:8px; text-align:right;">
-      <div style="font-size:11px; color:var(--gold);">الهداف: <b>${scorer}</b></div>
-    </div>
-    <div style="background:rgba(0,0,0,.3); padding:10px; border-radius:10px; text-align:right;">
-      <div style="font-size:11px; font-weight:bold; margin-bottom:4px;">المباريات القادمة:</div>
-      ${matches}
-    </div>
-  `;
-}
-
-document.getElementById("leagueModalClose").onclick = () => lModal.classList.remove("show");
-
-const toast = document.getElementById("toast");
-function showToast(m) {
-  document.getElementById("toastText").textContent = m;
-  toast.classList.add("show");
-  setTimeout(() => toast.classList.remove("show"), 2200);
-}
-
-function copyCode(c) {
-  if (navigator.clipboard) navigator.clipboard.writeText(c);
-  showToast("تم نسخ الكود: " + c);
-}
-
-const topBtn = document.getElementById("topBtn");
-addEventListener("scroll", () => topBtn.classList.toggle("show", scrollY > 400));
-topBtn.onclick = () => scrollTo({ top: 0, behavior: "smooth" });
-
-document.getElementById("year").textContent = new Date().getFullYear();
-document.getElementById("statApps").textContent = apps.length + "+";
-render(apps);
 </script>
-
 </body>
 </html>
